@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Palette — MD3 dark */
+  --color-surface: #121212;
+  --color-surface-container: #1E1E1E;
+  --color-surface-container-high: #2A2A2A;
+  --color-primary: #A3D262;
+  --color-on-surface: #E8E8E8;
+  --color-on-surface-variant: #B0B0B0;
+  --color-outline: #6F6F6F;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Radii — prefixed md- to avoid clashing with Tailwind's default rounded-md */
+  --radius-md-sm: 4px;
+  --radius-md-md: 12px;
+  --radius-md-lg: 16px;
+
+  /* Type scale — MD3 in Geist */
+  --text-display-lg: 57px;
+  --text-display-lg--line-height: 1.2;
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 1.2;
+  --text-title-lg: 22px;
+  --text-title-lg--line-height: 1.2;
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 1.5;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 1.5;
+  --text-label-md: 12px;
+  --text-label-md--line-height: 1.5;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.reveal { opacity: 0; transform: translateY(4px); transition: opacity 400ms ease, transform 400ms ease; }
+.reveal[data-revealed="true"] { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal[data-revealed="true"] { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }

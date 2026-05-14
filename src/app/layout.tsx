@@ -12,9 +12,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// TODO: favicon + OG image
 export const metadata: Metadata = {
-  title: "Coming Soon",
-  description: "Something great is on the way.",
+  title: "Amey Pawar — Independent Developer",
+  description:
+    "Independent developer building tubio and gitfix. Tools that make everyday software work less painful.",
+  openGraph: {
+    title: "Amey Pawar — Independent Developer",
+    description: "Independent developer building tubio and gitfix.",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", creator: "@ameyypawr" },
 };
 
 export default function RootLayout({
@@ -27,7 +35,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-surface text-on-surface font-sans">
+        {children}
+      </body>
     </html>
   );
 }
