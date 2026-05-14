@@ -1,13 +1,25 @@
+import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import FeaturedProjects from "@/components/FeaturedProjects";
-import ContactFooter from "@/components/ContactFooter";
+import About from "@/components/About";
+import Education from "@/components/Education";
+import Connect from "@/components/Connect";
 
 export default function Home() {
   return (
-    <main className="flex-1 w-full max-w-[1024px] mx-auto px-6 sm:px-10 py-24">
+    <main className="relative flex-1 w-full">
+      <a
+        href="#projects"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-surface-container-high focus:text-on-surface focus:rounded-md-sm"
+      >
+        Skip to content
+      </a>
+      <Nav />
       <Hero />
       <FeaturedProjects />
-      <ContactFooter />
+      <About />
+      <Education />
+      <Connect />
     </main>
   );
 }

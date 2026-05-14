@@ -9,6 +9,7 @@
   --color-on-surface: #E8E8E8;
   --color-on-surface-variant: #B0B0B0;
   --color-outline: #6F6F6F;
+  --color-on-surface-strong: #FFFFFF;
 
   /* Radii — prefixed md- to avoid clashing with Tailwind's default rounded-md */
   --radius-md-sm: 4px;
@@ -40,6 +41,30 @@ html, body {
 
 .reveal { opacity: 0; transform: translateY(4px); transition: opacity 400ms ease, transform 400ms ease; }
 .reveal[data-revealed="true"] { opacity: 1; transform: translateY(0); }
+
+/* Hero entrance — fades up + staggers */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { opacity: 0; animation: fade-up 500ms ease-out forwards; }
+.fade-up-1 { animation-delay: 0ms; }
+.fade-up-2 { animation-delay: 100ms; }
+.fade-up-3 { animation-delay: 200ms; }
+.fade-up-4 { animation-delay: 300ms; }
+
+/* Horizontal line/underline grow-in from the left */
+@keyframes slide-in-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.slide-in-x {
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: slide-in-x 600ms ease-out forwards;
+}
+.slide-in-x-delay-400 { animation-delay: 400ms; }
+.slide-in-x-delay-800 { animation-delay: 800ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal[data-revealed="true"] { opacity: 1; transform: none; transition: none; }
