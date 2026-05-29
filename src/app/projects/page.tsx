@@ -55,6 +55,7 @@ export default async function ProjectsPage() {
   return (
     <main className="flex-1 w-full max-w-[1024px] mx-auto px-6 sm:px-10 py-24">
       <h1 className="text-display-lg font-semibold tracking-tight">Projects</h1>
+      <div className="mt-6 h-px w-16 bg-primary/70" aria-hidden="true" />
       <p className="text-body-lg text-on-surface-variant mt-6 max-w-2xl">
         Everything I&apos;ve shipped in public — auto-synced from GitHub.
       </p>

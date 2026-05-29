@@ -3,6 +3,7 @@ import type { Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import ContactFooter from "@/components/ContactFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-surface text-on-surface font-sans">
         <Nav />
         {children}
+        <ContactFooter />
       </body>
     </html>
   );
