@@ -45,7 +45,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal[data-revealed="true"] { opacity: 1; transform: none; transition: none; }
-  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  /* Kill incidental motion site-wide, but NOT the iris layer — it gets a short, deliberate fade below. */
+  *:not(.iris-layer), *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
 /* Iris transition (Mario-style) — box-shadow hole, size-animated, fails open (transparent), above overlay */
@@ -61,12 +62,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 70;
-  will-change: width, height;
+  will-change: width, height, opacity;
+  --iris-dur: 2000ms;
 }
 .iris-layer[data-phase="idle"] { display: none; }
-.iris-layer[data-phase="in"]   { animation: iris-in 2500ms ease-in both; }
+.iris-layer[data-phase="in"]   { animation: iris-in var(--iris-dur) ease-in both; }
 .iris-layer[data-phase="hold"] { width: 0; height: 0; }
-.iris-layer[data-phase="out"]  { animation: iris-out 2500ms ease-out both; }
+.iris-layer[data-phase="out"]  { animation: iris-out var(--iris-dur) ease-out both; }
 
 @keyframes iris-in {
   0%   { width: 400vmax; height: 400vmax; }
@@ -78,5 +80,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .iris-layer[data-phase="in"], .iris-layer[data-phase="out"] { animation: none; display: none; }
+  /* Reduce, don't eliminate: a short white crossfade still conveys the transition. */
+  .iris-layer { --iris-dur: 350ms; }
+  .iris-layer[data-phase="in"] {
+    width: 0; height: 0;
+    animation: iris-fade-in var(--iris-dur) ease both;
+  }
+  .iris-layer[data-phase="hold"] { width: 0; height: 0; }
+  .iris-layer[data-phase="out"] {
+    width: 0; height: 0;
+    animation: iris-fade-out var(--iris-dur) ease both;
+  }
 }
+
+@keyframes iris-fade-in  { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes iris-fade-out { 0% { opacity: 1; } 100% { opacity: 0; } }
