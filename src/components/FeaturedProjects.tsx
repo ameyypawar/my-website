@@ -11,7 +11,9 @@ export default function FeaturedProjects() {
         </h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((p) => (
-            <ProjectCard key={p.name} project={p} />
+            <div key={p.name} className={p.wide ? "md:col-span-2" : undefined}>
+              <ProjectCard project={p} />
+            </div>
           ))}
         </div>
       </section>
