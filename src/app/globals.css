@@ -16,8 +16,8 @@
   --radius-md-lg: 16px;
 
   /* Type scale — MD3 in Geist */
-  --text-display-lg: 57px;
-  --text-display-lg--line-height: 1.2;
+  --text-display-lg: clamp(36px, 8.5vw, 57px);
+  --text-display-lg--line-height: 1.1;
   --text-headline-lg: 32px;
   --text-headline-lg--line-height: 1.2;
   --text-title-lg: 22px;
@@ -38,6 +38,8 @@ html, body {
   color: var(--color-on-surface);
 }
 
+button, a { -webkit-tap-highlight-color: transparent; }
+
 .reveal { opacity: 0; transform: translateY(4px); transition: opacity 400ms ease, transform 400ms ease; }
 .reveal[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 
@@ -46,36 +48,33 @@ html, body {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
-/* Iris transition (Mario-style) */
+/* Iris transition (Mario-style) — box-shadow hole, size-animated, fails open (transparent), above overlay */
 .iris-layer {
   position: fixed;
-  inset: 0;
-  background: #ffffff;
+  left: var(--iris-x, 50vw);
+  top: var(--iris-y, 50vh);
+  width: 400vmax;
+  height: 400vmax;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 250vmax #ffffff;
+  transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 50;
-  will-change: mask-image, -webkit-mask-image;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 100%, black 101%);
-          mask-image: radial-gradient(circle at 50% 50%, transparent 100%, black 101%);
+  z-index: 70;
+  will-change: width, height;
 }
 .iris-layer[data-phase="idle"] { display: none; }
-.iris-layer[data-phase="in"]   { animation: iris-in 600ms ease-in forwards; }
-.iris-layer[data-phase="hold"] {
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0%, black 1%);
-          mask-image: radial-gradient(circle at 50% 50%, transparent 0%, black 1%);
-}
-.iris-layer[data-phase="out"]  { animation: iris-out 600ms ease-out forwards; }
+.iris-layer[data-phase="in"]   { animation: iris-in 2500ms ease-in both; }
+.iris-layer[data-phase="hold"] { width: 0; height: 0; }
+.iris-layer[data-phase="out"]  { animation: iris-out 2500ms ease-out both; }
 
 @keyframes iris-in {
-  0%   { -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 100%, black 101%);
-                 mask-image: radial-gradient(circle at 50% 50%, transparent 100%, black 101%); }
-  100% { -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0%,   black 1%);
-                 mask-image: radial-gradient(circle at 50% 50%, transparent 0%,   black 1%); }
+  0%   { width: 400vmax; height: 400vmax; }
+  100% { width: 0; height: 0; }
 }
 @keyframes iris-out {
-  0%   { -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0%,   black 1%);
-                 mask-image: radial-gradient(circle at 50% 50%, transparent 0%,   black 1%); }
-  100% { -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 100%, black 101%);
-                 mask-image: radial-gradient(circle at 50% 50%, transparent 100%, black 101%); }
+  0%   { width: 0; height: 0; }
+  100% { width: 400vmax; height: 400vmax; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -58,14 +58,26 @@ export default function BreakoutGame({
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = LOGICAL_W * dpr;
-    canvas.height = LOGICAL_H * dpr;
-    canvas.style.width = "100%";
-    canvas.style.maxWidth = LOGICAL_W + "px";
-    canvas.style.aspectRatio = `${LOGICAL_W} / ${LOGICAL_H}`;
-    canvas.style.touchAction = "none";
-    ctx.scale(dpr, dpr);
+
+    const resizeBuffer = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const cssW = Math.max(1, Math.round(rect.width));
+      const cssH = Math.max(1, Math.round(rect.height));
+      canvas.width = cssW * dpr;
+      canvas.height = cssH * dpr;
+      ctx.setTransform(
+        (cssW / LOGICAL_W) * dpr, 0,
+        0, (cssH / LOGICAL_H) * dpr,
+        0, 0,
+      );
+    };
+
+    resizeBuffer();
+
+    const ro = new ResizeObserver(resizeBuffer);
+    ro.observe(canvas);
+    window.addEventListener("orientationchange", resizeBuffer);
 
     const g = gameRef.current;
     let raf = 0;
@@ -116,8 +128,8 @@ export default function BreakoutGame({
       else if (e.key === "ArrowRight") keyState.right = false;
     };
 
-    canvas.addEventListener("pointermove", onPointerMove);
-    canvas.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
     canvas.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
     document.addEventListener("keyup", onKeyUp);
@@ -211,9 +223,11 @@ export default function BreakoutGame({
     raf = requestAnimationFrame(step);
 
     return () => {
+      ro.disconnect();
+      window.removeEventListener("orientationchange", resizeBuffer);
       cancelAnimationFrame(raf);
-      canvas.removeEventListener("pointermove", onPointerMove);
-      canvas.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("touchmove", onTouchMove);
       canvas.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("keyup", onKeyUp);
@@ -223,7 +237,7 @@ export default function BreakoutGame({
   return (
     <canvas
       ref={canvasRef}
-      className="block w-full rounded-md-md border border-outline/40 bg-[#0A0A0A]"
+      className="block w-full max-w-[480px] mx-auto rounded-md-md border border-outline/40 bg-[#0A0A0A] aspect-[4/3] max-h-[calc(100dvh-9rem)] [touch-action:none]"
       aria-label="Breakout game canvas"
     />
   );

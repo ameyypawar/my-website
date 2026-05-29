@@ -39,27 +39,27 @@ export default function BreakoutOverlay({ onClose }: { onClose: () => void }) {
       aria-label="Breakout game"
       className="fixed inset-0 z-[60] bg-surface flex flex-col"
     >
-      <div className="flex items-center justify-between px-6 py-4 border-b border-outline/30">
-        <div className="font-mono uppercase text-[12px] tracking-[0.15em] text-on-surface">
+      <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 border-b border-outline/30">
+        <div className="font-mono uppercase text-[11px] sm:text-[12px] tracking-[0.12em] sm:tracking-[0.15em] text-on-surface flex flex-wrap gap-x-3 gap-y-0 min-w-0">
           <span>SCORE {String(score).padStart(6, "0")}</span>
-          <span className="mx-3 text-on-surface-variant">·</span>
+          <span aria-hidden className="hidden sm:inline text-on-surface-variant">·</span>
           <span>LIVES {hearts || "—"}</span>
         </div>
-        <div className="hidden sm:block text-label-md text-on-surface-variant">
+        <div className="hidden md:block text-label-md text-on-surface-variant">
           Press space to launch · drag / arrows to move
         </div>
         <button
           autoFocus
           onClick={onClose}
           aria-label="Close game"
-          className="rounded-full p-2 hover:bg-surface-container-high text-on-surface"
+          className="shrink-0 rounded-full p-2 hover:bg-surface-container-high text-on-surface"
         >
           <X size={18} />
         </button>
       </div>
 
       <div className="flex-1 flex items-center justify-center p-6">
-        <div className="w-full max-w-[480px] relative">
+        <div className="relative w-full max-w-[480px] flex items-center justify-center">
           <BreakoutGame
             key={gameKey}
             onScoreChange={setScore}

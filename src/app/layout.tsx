@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,6 +24,13 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image", creator: "@ameyypawr" },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#121212",
 };
 
 export default function RootLayout({

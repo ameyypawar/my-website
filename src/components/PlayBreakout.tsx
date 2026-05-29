@@ -15,8 +15,13 @@ export default function PlayBreakout() {
   const [targetDir, setTargetDir] = useState<"open" | "closed">("open");
   const targetRef = useRef<"open" | "closed">("open");
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [origin, setOrigin] = useState<{ x: number; y: number } | null>(null);
 
   const open = () => {
+    const rect = buttonRef.current?.getBoundingClientRect();
+    if (rect) {
+      setOrigin({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+    }
     targetRef.current = "open";
     setTargetDir("open");
     setPhase("iris-in");
@@ -29,7 +34,7 @@ export default function PlayBreakout() {
 
   useEffect(() => {
     if (phase !== "iris-hold") return;
-    const t = window.setTimeout(() => setPhase("iris-out"), 300);
+    const t = window.setTimeout(() => setPhase("iris-out"), 700);
     return () => window.clearTimeout(t);
   }, [phase]);
 
@@ -57,12 +62,13 @@ export default function PlayBreakout() {
         ref={buttonRef}
         onClick={open}
         aria-label="Play Breakout game"
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-40 inline-flex items-center gap-2 bg-white text-black rounded-full px-6 py-3 text-sm font-medium shadow hover:shadow-lg hover:ring-2 hover:ring-white/30 transition"
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-40 inline-flex items-center justify-center gap-0 sm:gap-2 bg-white text-black rounded-full p-3 sm:px-6 sm:py-3 text-sm font-medium shadow hover:shadow-lg hover:ring-2 hover:ring-white/30 transition pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1rem,env(safe-area-inset-right))] sm:pt-3 sm:pr-6"
       >
-        <Play size={14} /> Play Breakout
+        <Play size={16} />
+        <span className="hidden sm:inline">Play Breakout</span>
       </button>
       {overlayVisible && <BreakoutOverlay onClose={close} />}
-      <IrisTransition phase={irisPhase} onPhaseDone={onIrisDone} />
+      <IrisTransition phase={irisPhase} origin={origin} onPhaseDone={onIrisDone} />
     </>
   );
 }
