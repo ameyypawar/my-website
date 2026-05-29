@@ -1,5 +1,5 @@
 import { ArrowUpRight, Star } from "lucide-react";
-import type { GitHubRepo } from "@/app/projects/page";
+import type { GitHubRepo } from "@/types/github";
 
 export default function RepoCard({
   repo,

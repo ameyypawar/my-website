@@ -1,24 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, Play } from "lucide-react";
 import BreakoutGame from "./BreakoutGame";
 
 export default function BreakoutOverlay({ onClose }: { onClose: () => void }) {
+  const overlayRef = useRef<HTMLDivElement>(null);
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [status, setStatus] = useState<"idle" | "playing" | "won" | "lost">("idle");
   const [gameKey, setGameKey] = useState(0);
 
   useEffect(() => {
-    const main = document.querySelector("main");
-    if (main) main.setAttribute("inert", "");
+    const overlay = overlayRef.current;
+    const inerted: Element[] = [];
+    for (const child of Array.from(document.body.children)) {
+      if (child === overlay) continue;
+      if (!child.hasAttribute("inert")) {
+        child.setAttribute("inert", "");
+        inerted.push(child);
+      }
+    }
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
     return () => {
-      if (main) main.removeAttribute("inert");
+      for (const el of inerted) el.removeAttribute("inert");
       document.removeEventListener("keydown", onKey);
     };
   }, [onClose]);
@@ -34,6 +42,7 @@ export default function BreakoutOverlay({ onClose }: { onClose: () => void }) {
 
   return (
     <div
+      ref={overlayRef}
       role="dialog"
       aria-modal="true"
       aria-label="Breakout game"

@@ -55,9 +55,15 @@ export default function BreakoutGame({
     status: "idle" as Status,
   });
 
+  const cbRef = useRef({ onScoreChange, onLivesChange, onStatusChange });
+  useEffect(() => {
+    cbRef.current = { onScoreChange, onLivesChange, onStatusChange };
+  });
+
   useEffect(() => {
     const canvas = canvasRef.current!;
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     const resizeBuffer = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -97,7 +103,7 @@ export default function BreakoutGame({
       g.ball.vx = (Math.random() * 2 - 1) * 2;
       if (g.status === "idle") {
         g.status = "playing";
-        onStatusChange("playing");
+        cbRef.current.onStatusChange("playing");
       }
     };
 
@@ -171,10 +177,10 @@ export default function BreakoutGame({
             if (Math.abs(dx) > Math.abs(dy)) g.ball.vx *= -1; else g.ball.vy *= -1;
             br.alive = false;
             g.score += 10;
-            onScoreChange(g.score);
+            cbRef.current.onScoreChange(g.score);
             if (g.bricks.every((b) => !b.alive)) {
               g.status = "won";
-              onStatusChange("won");
+              cbRef.current.onStatusChange("won");
             }
             break;
           }
@@ -182,10 +188,10 @@ export default function BreakoutGame({
 
         if (g.ball.y - g.ball.r > LOGICAL_H) {
           g.lives -= 1;
-          onLivesChange(g.lives);
+          cbRef.current.onLivesChange(g.lives);
           if (g.lives <= 0) {
             g.status = "lost";
-            onStatusChange("lost");
+            cbRef.current.onStatusChange("lost");
           } else {
             reattach();
           }
@@ -232,7 +238,7 @@ export default function BreakoutGame({
       document.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("keyup", onKeyUp);
     };
-  }, [onScoreChange, onLivesChange, onStatusChange]);
+  }, []);
 
   return (
     <canvas

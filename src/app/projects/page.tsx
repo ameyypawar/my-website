@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import RepoCard from "@/components/RepoCard";
 import { HIDE, DESCRIPTION_OVERRIDES } from "@/data/projectsConfig";
+import type { GitHubRepo } from "@/types/github";
 
 export const metadata: Metadata = {
   title: "Projects — Amey Pawar",
@@ -8,28 +9,20 @@ export const metadata: Metadata = {
     "Everything Amey Pawar has shipped in public — auto-synced from GitHub.",
 };
 
-// Minimal shape of the GitHub REST repo object — only the fields we render.
-export type GitHubRepo = {
-  name: string;
-  html_url: string;
-  description: string | null;
-  homepage: string | null;
-  language: string | null;
-  stargazers_count: number;
-  fork: boolean;
-  archived: boolean;
-  updated_at: string;
-  pushed_at: string | null;
-};
-
 const GITHUB_USER = "ameyypawar";
 const REPOS_URL = `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated&type=owner`;
 
 async function getRepos(): Promise<GitHubRepo[] | null> {
   try {
+    const headers: Record<string, string> = {
+      Accept: "application/vnd.github+json",
+    };
+    if (process.env.GITHUB_TOKEN) {
+      headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    }
     const res = await fetch(REPOS_URL, {
       next: { revalidate: 86400 },
-      headers: { Accept: "application/vnd.github+json" },
+      headers,
     });
     if (!res.ok) return null;
     const data = (await res.json()) as GitHubRepo[];
