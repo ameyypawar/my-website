@@ -70,12 +70,6 @@ export default function ResumePage() {
               <li>Engineered deterministic AST-level merging atop Mergiraf, cross-machine <em>rerere</em>-style replay, and a BYO-key AI layer abstracting OpenAI, Anthropic, Gemini, and Ollama — on a private Rust engine.</li>
             </ul>
             <p className="mt-1 text-body-md"><strong>Technologies:</strong> Rust, Model Context Protocol (MCP), Mergiraf, VS Code Extension API, Open VSX, Git internals.</p>
-            <p className="mt-1 text-body-md text-on-surface-variant">
-              <a href="https://gfix.space" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">gfix.space</a>{" "}·{" "}
-              <a href="https://gitfix.pro" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">gitfix.pro</a>{" "}·{" "}
-              <a href="https://github.com/ameyypawar/gfix-docs" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">github.com/ameyypawar/gfix-docs</a>{" "}·{" "}
-              <a href="https://github.com/ameyypawar/gitfix" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">github.com/ameyypawar/gitfix</a>
-            </p>
           </div>
 
           <div className="mt-4">
@@ -84,15 +78,10 @@ export default function ResumePage() {
               <p className="text-body-md text-on-surface-variant whitespace-nowrap">Sep 2025 – Present · Mumbai</p>
             </div>
             <ul className="mt-1 list-disc pl-5 space-y-1 text-body-md leading-relaxed">
-              <li>Built and shipped <strong>Tubio</strong> end-to-end — a Chrome MV3 SaaS (Plasmo + React + TypeScript) that downloads YouTube transcripts at volume with metadata and multimodal context the official YouTube Data API doesn&apos;t expose.</li>
               <li>Engineered bulk-download of up to 800 videos per session with sequential rate-limiting and IndexedDB persistence that survives MV3 service-worker restarts; sidesteps the 2024 PO Token gauntlet by reading from the user&apos;s authenticated session.</li>
               <li>Shipped <em>Watch with Claude</em> — bundles transcript + evenly-spaced frame captures + a structured <code>report.md</code> so LLMs can ingest full multimodal video context; <strong>4.8★</strong> on the Chrome Web Store.</li>
             </ul>
             <p className="mt-1 text-body-md"><strong>Technologies:</strong> Plasmo, Chrome MV3, React, TypeScript, IndexedDB, Innertube API, Supabase, Polar.</p>
-            <p className="mt-1 text-body-md text-on-surface-variant">
-              <a href="https://tubio.pro" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">tubio.pro</a>{" "}·{" "}
-              <a href="https://github.com/ameyypawar/tubio-docs" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">github.com/ameyypawar/tubio-docs</a>
-            </p>
           </div>
 
           <div className="mt-4">
@@ -119,22 +108,12 @@ export default function ResumePage() {
         <section className="resume-section">
           <h3 className="resume-section-label">Projects</h3>
           <div className="mt-1">
-            <div className="flex items-baseline justify-between gap-4 flex-wrap">
-              <p className="text-body-md font-semibold">
-                scribed —{" "}
-                <a href="https://github.com/ameyypawar/scribed" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-normal">
-                  github.com/ameyypawar/scribed
-                </a>
-              </p>
-            </div>
-            <p className="mt-1 text-body-md leading-relaxed">
-              Self-hostable, provider-agnostic audio transcription microservice for customer-support platforms (REST + signed webhooks).
+            <p className="text-body-md leading-relaxed">
+              <strong>scribed</strong> —{" "}
+              <a href="https://github.com/ameyypawar/scribed" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">github.com/ameyypawar/scribed</a>
+              {" "}— Self-hostable, provider-agnostic audio transcription microservice for customer-support platforms (REST + signed webhooks).{" "}
+              <span className="text-on-surface-variant">Tech: Ruby, Rails 8, Postgres, Sidekiq, Docker.</span>
             </p>
-            <ul className="mt-1 list-disc pl-5 space-y-1 text-body-md leading-relaxed">
-              <li>Pluggable transcription-provider abstraction across four backends (whisper.cpp, faster-whisper, Deepgram, OpenAI), swappable via env without code changes.</li>
-              <li>Rails 8 + Sidekiq + Postgres with signed webhook delivery and exponential-backoff retry.</li>
-            </ul>
-            <p className="mt-1 text-body-md"><strong>Technologies:</strong> Ruby, Rails 8, Postgres, Sidekiq, Docker, REST.</p>
           </div>
         </section>
 

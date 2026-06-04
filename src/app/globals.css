@@ -132,7 +132,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media print {
   @page {
     size: A4;
-    margin: 0.45in;
+    margin: 0.35in;
   }
 
   header,
@@ -167,8 +167,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
     margin: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
-    font-size: 9.5pt;
-    line-height: 1.3;
+    font-size: 9pt;
+    line-height: 1.22;
     color: #000000 !important;
   }
 
@@ -184,50 +184,50 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 
   #resume .resume-h2 {
-    font-size: 17pt;
+    font-size: 16pt;
     margin: 0;
   }
   #resume .resume-contact {
-    font-size: 9pt;
-    margin-top: 0.2rem;
+    font-size: 8.5pt;
+    margin-top: 0.15rem;
   }
 
   #resume .resume-section-label {
     color: #000000 !important;
     border-bottom: 1px solid #999999 !important;
-    font-size: 12pt;
+    font-size: 11pt;
     letter-spacing: 0.01em;
     font-weight: 700;
-    padding-bottom: 0.15rem;
-    margin-bottom: 0.25rem;
+    padding-bottom: 0.08rem;
+    margin-bottom: 0.12rem;
   }
 
   #resume .resume-section {
-    margin-top: 0.55rem;
+    margin-top: 0.22rem;
     break-inside: avoid;
     page-break-inside: avoid;
   }
   #resume header.resume-header h2 {
-    font-size: 17pt;
+    font-size: 16pt;
     margin: 0;
   }
   #resume header.resume-header p {
-    font-size: 9pt;
-    margin-top: 0.2rem;
+    font-size: 8.5pt;
+    margin-top: 0.15rem;
   }
   #resume h3 {
     margin: 0;
   }
   #resume ul {
-    margin-top: 0.25rem;
-    padding-left: 1rem;
+    margin-top: 0.15rem;
+    padding-left: 0.9rem;
   }
   #resume ul li {
-    margin-top: 0.1rem;
-    line-height: 1.28;
+    margin-top: 0.05rem;
+    line-height: 1.25;
   }
   #resume p {
-    margin-top: 0.25rem;
+    margin-top: 0.18rem;
   }
 
   #resume section,
