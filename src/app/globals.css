@@ -95,3 +95,120 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @keyframes iris-fade-in  { 0% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes iris-fade-out { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ───────────────────────────────────────────────────────────────
+   Resume — on-screen helpers (shared by screen + print)
+   ─────────────────────────────────────────────────────────────── */
+.resume-section {
+  margin-top: 2rem;
+}
+.resume-section-label {
+  font-size: var(--text-label-md);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-on-surface-variant);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-outline) 30%, transparent);
+  padding-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Print stylesheet — black on white, single A4 page, ATS-friendly
+   ─────────────────────────────────────────────────────────────── */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.5in;
+  }
+
+  header,
+  footer,
+  .iris-layer,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  main > h1,
+  main > .h-px,
+  main > p {
+    display: none !important;
+  }
+
+  #resume {
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    font-size: 10pt;
+    line-height: 1.35;
+    color: #000000 !important;
+  }
+
+  #resume * {
+    color: #000000 !important;
+    border-color: #999999 !important;
+    background: transparent !important;
+  }
+
+  #resume a {
+    color: #000000 !important;
+    text-decoration: underline;
+  }
+
+  #resume .resume-section-label {
+    color: #000000 !important;
+    border-bottom: 1px solid #bbbbbb !important;
+    font-size: 9pt;
+    letter-spacing: 0.16em;
+    padding-bottom: 0.15rem;
+  }
+
+  #resume .resume-section {
+    margin-top: 0.85rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  #resume header.resume-header h2 {
+    font-size: 16pt;
+    margin: 0;
+  }
+  #resume header.resume-header p {
+    font-size: 9.5pt;
+    margin-top: 0.25rem;
+  }
+  #resume h3 {
+    margin: 0;
+  }
+  #resume ul {
+    margin-top: 0.35rem;
+    padding-left: 1.1rem;
+  }
+  #resume ul li {
+    margin-top: 0.15rem;
+    line-height: 1.32;
+  }
+  #resume p {
+    margin-top: 0.35rem;
+  }
+
+  #resume section,
+  #resume header.resume-header,
+  #resume .resume-section > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

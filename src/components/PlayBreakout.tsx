@@ -62,6 +62,7 @@ export default function PlayBreakout() {
         ref={buttonRef}
         onClick={open}
         aria-label="Play Breakout game"
+        data-print-hide
         className="fixed top-1 right-6 sm:top-2 sm:right-10 z-50 inline-flex items-center justify-center gap-0 sm:gap-2 bg-white text-black rounded-full p-3 sm:px-6 sm:py-3 text-sm font-medium shadow hover:shadow-lg hover:ring-2 hover:ring-white/30 transition"
       >
         <Play size={16} />
