@@ -21,7 +21,7 @@ export default function ResumePage() {
         <header className="resume-header">
           <h2 className="resume-h2">AMEY PAWAR</h2>
           <p className="resume-contact text-body-md text-on-surface-variant leading-relaxed">
-            Software Engineer · Developer Tooling &amp; AI Agents
+            Software Engineer · Developer Tooling & AI Agents
           </p>
           <p className="resume-contact text-body-md text-on-surface-variant leading-relaxed mt-1">
             <a href="mailto:ameypawar1237@gmail.com" className="text-primary hover:underline">
@@ -29,12 +29,6 @@ export default function ResumePage() {
             </a>{" "}· +91 88505 58058 ·{" "}
             <a href="https://github.com/ameyypawar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               github.com/ameyypawar
-            </a>{" "}·{" "}
-            <a href="https://gfix.space" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              gfix.space
-            </a>{" "}·{" "}
-            <a href="https://tubio.pro" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              tubio.pro
             </a>{" "}· Mumbai, India
           </p>
         </header>
@@ -42,7 +36,7 @@ export default function ResumePage() {
         <section className="resume-section">
           <h3 className="resume-section-label">Summary</h3>
           <p className="text-body-md leading-relaxed">
-            Independent engineer with 1+ year shipping production developer tools at the intersection of AI agents and Git workflows. Built <strong>gfix</strong> (Rust + MCP merge resolver) and <strong>Tubio</strong> (Chrome MV3 SaaS, 4.8★), both live and used by real users. Comfortable across the full stack — from Rust engine internals and Chrome extension service workers to React frontends and Rails APIs.
+            Independent engineer shipping production developer tools at the intersection of AI agents and Git workflows. Final-year BTech (Electronics & Computer Science), graduating <strong>May 2027</strong> — open to internships and new-grad roles. Built <strong>gfix</strong> (Rust + MCP merge resolver) and <strong>Tubio</strong> (Chrome MV3 SaaS, 4.8★).
           </p>
         </section>
 
@@ -53,7 +47,7 @@ export default function ResumePage() {
             <li><strong>AI / Agents:</strong> Model Context Protocol (MCP), Claude API, OpenAI, Gemini, Ollama, prompt engineering</li>
             <li><strong>Frontend:</strong> React, Next.js (App Router), Tailwind CSS, Plasmo (MV3), HTML5 Canvas</li>
             <li><strong>Browser / Extensions:</strong> Chrome MV3, VS Code Extension API (Marketplace + Open VSX), service workers, IndexedDB, Innertube API</li>
-            <li><strong>Backend &amp; Infra:</strong> Node.js, Ruby on Rails 8, Sidekiq, REST APIs, Supabase, Vercel, Docker, Polar</li>
+            <li><strong>Backend & Infra:</strong> Node.js, Ruby on Rails 8, Sidekiq, REST APIs, Supabase, Vercel, Docker, Polar</li>
             <li><strong>Git / Systems:</strong> Git internals, rerere, AST-based merging (Mergiraf), worktrees, multi-agent workflows</li>
           </ul>
         </section>
@@ -64,16 +58,15 @@ export default function ResumePage() {
           <div className="mt-1">
             <div className="flex items-baseline justify-between gap-4 flex-wrap">
               <p className="text-body-md font-semibold">
-                Founder &amp; Engineer ·{" "}
+                Founder & Engineer ·{" "}
                 <a href="https://gfix.space" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                  gfix &amp; gitfix
+                  gfix & gitfix
                 </a>
               </p>
               <p className="text-body-md text-on-surface-variant whitespace-nowrap">Mar 2026 – Present · Mumbai</p>
             </div>
             <ul className="mt-1 list-none pl-0 space-y-1 text-body-md leading-relaxed">
-              <li className="resume-bullet">Architected <strong>gfix</strong> — a Rust CLI + MCP server that lets AI coding agents resolve git merge conflicts natively, eliminating the human bottleneck in parallel-agent workflows where multiple agents write to the same codebase.</li>
-              <li className="resume-bullet">Shipped <strong>gitfix</strong> VS Code extension (Marketplace + Open VSX) with a conflict tree, one-click fixes, and a full per-resolution audit trail — keeping humans in the loop on every agent-driven merge decision.</li>
+              <li className="resume-bullet">Architected <strong>gfix</strong> (Rust CLI + MCP server) and shipped the companion <strong>gitfix</strong> VS Code extension (Marketplace + Open VSX) — together they let AI coding agents resolve git merge conflicts natively, with a conflict tree, one-click fixes, and a per-resolution audit trail.</li>
               <li className="resume-bullet">Engineered deterministic AST-level merging on top of Mergiraf, cross-machine rerere-style replay, and a BYO-key AI provider layer abstracting OpenAI, Anthropic, Gemini, and Ollama — all on a private Rust engine.</li>
             </ul>
             <p className="mt-1 text-body-md text-on-surface-variant italic">Stack: Rust · MCP · Mergiraf · VS Code Extension API · Open VSX · Git internals</p>
@@ -82,7 +75,7 @@ export default function ResumePage() {
           <div className="mt-4">
             <div className="flex items-baseline justify-between gap-4 flex-wrap">
               <p className="text-body-md font-semibold">
-                Founder &amp; Engineer ·{" "}
+                Founder & Engineer ·{" "}
                 <a href="https://tubio.pro" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   Tubio
                 </a>
@@ -92,7 +85,6 @@ export default function ResumePage() {
             <ul className="mt-1 list-none pl-0 space-y-1 text-body-md leading-relaxed">
               <li className="resume-bullet">Built and shipped Tubio end-to-end — a Chrome MV3 SaaS achieving <strong>4.8★</strong> on the Chrome Web Store; downloads YouTube transcripts at volume with metadata and multimodal context the official YouTube Data API doesn&apos;t expose.</li>
               <li className="resume-bullet">Engineered bulk download of up to 800 videos/session with sequential rate-limiting and IndexedDB persistence that survives MV3 service-worker restarts; bypassed the 2024 PoToken enforcement by reading from the user&apos;s authenticated session.</li>
-              <li className="resume-bullet">Shipped <em>Watch with Claude</em> — bundles transcript + evenly-spaced frame captures into a structured <code>report.md</code> for full multimodal video ingestion by LLMs; primary differentiating feature driving user retention.</li>
             </ul>
             <p className="mt-1 text-body-md text-on-surface-variant italic">Stack: Plasmo · Chrome MV3 · React · TypeScript · IndexedDB · Innertube API · Supabase · Polar</p>
           </div>
@@ -117,6 +109,7 @@ export default function ResumePage() {
 
         <section className="resume-section">
           <h3 className="resume-section-label">Projects</h3>
+
           <div className="mt-1">
             <div className="flex items-baseline justify-between gap-4 flex-wrap">
               <p className="text-body-md font-semibold">
@@ -130,8 +123,35 @@ export default function ResumePage() {
             <ul className="mt-1 list-none pl-0 space-y-1 text-body-md leading-relaxed">
               <li className="resume-bullet">Built a self-hostable, provider-agnostic audio transcription microservice for customer-support platforms, with pluggable backends across whisper.cpp, faster-whisper, Deepgram, and OpenAI — swappable via environment variable without code changes.</li>
             </ul>
-            <p className="mt-1 text-body-md text-on-surface-variant italic">Stack: Ruby · Rails 8 · Postgres · Sidekiq · Docker · REST</p>
           </div>
+
+          <div className="mt-3">
+            <div className="flex items-baseline justify-between gap-4 flex-wrap">
+              <p className="text-body-md font-semibold">
+                Pluck ·{" "}
+                <a href="https://github.com/ameyypawar/pluck" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-normal">
+                  github.com/ameyypawar/pluck
+                </a>
+              </p>
+              <p className="text-body-md text-on-surface-variant whitespace-nowrap">2026</p>
+            </div>
+            <p className="text-body-md leading-relaxed mt-1">
+              MIT-licensed Chrome MV3 extension that auto-detects listed items on any page and exports to CSV; deterministic, no AI.{" "}
+              <span className="text-on-surface-variant italic">Stack: TypeScript · Plasmo · Chrome MV3.</span>
+            </p>
+          </div>
+        </section>
+
+        <section className="resume-section">
+          <h3 className="resume-section-label">Open Source</h3>
+          <p className="text-body-md leading-relaxed">
+            Active contributor across the Rust and TypeScript open-source ecosystem — merged into <strong>windmill-labs/windmill</strong> (
+            <a href="https://github.com/windmill-labs/windmill/pull/9460" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">#9460</a>,{" "}
+            <a href="https://github.com/windmill-labs/windmill/pull/9463" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">#9463</a>
+            ) and <strong>tokio-rs/tokio</strong> (
+            <a href="https://github.com/tokio-rs/tokio/pull/8196" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">#8196</a>
+            ).
+          </p>
         </section>
 
         <section className="resume-section">

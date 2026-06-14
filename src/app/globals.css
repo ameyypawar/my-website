@@ -132,7 +132,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media print {
   @page {
     size: A4;
-    margin: 0.28in;
+    margin: 0.25in;
   }
 
   header,
@@ -167,7 +167,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
     margin: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
-    font-size: 8.5pt;
+    font-size: 8.25pt;
     line-height: 1.2;
     color: #000000 !important;
   }
