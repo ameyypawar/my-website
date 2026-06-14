@@ -4,7 +4,7 @@ import PrintButton from "@/components/PrintButton";
 export const metadata: Metadata = {
   title: "Resume — Amey Pawar",
   description:
-    "Amey Pawar — independent developer shipping production tools at the intersection of AI coding agents and developer tooling. Maintainer of gfix and tubio.",
+    "Amey Pawar — Software Engineer · Developer Tooling & AI Agents. Maintainer of gfix and Tubio.",
 };
 
 export default function ResumePage() {
@@ -19,40 +19,42 @@ export default function ResumePage() {
 
       <article id="resume" className="mt-12 mx-auto max-w-[800px] text-on-surface">
         <header className="resume-header">
-          <h2 className="resume-h2">Amey Pawar</h2>
+          <h2 className="resume-h2">AMEY PAWAR</h2>
           <p className="resume-contact text-body-md text-on-surface-variant leading-relaxed">
-            Mumbai · +91 8850558058 ·{" "}
+            Software Engineer · Developer Tooling &amp; AI Agents
+          </p>
+          <p className="resume-contact text-body-md text-on-surface-variant leading-relaxed mt-1">
             <a href="mailto:ameypawar1237@gmail.com" className="text-primary hover:underline">
               ameypawar1237@gmail.com
-            </a>{" "}
-            ·{" "}
+            </a>{" "}· +91 88505 58058 ·{" "}
             <a href="https://github.com/ameyypawar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              GitHub
-            </a>{" "}
-            ·{" "}
-            <a href="https://linkedin.com/in/ameypawar77" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              LinkedIn
-            </a>
+              github.com/ameyypawar
+            </a>{" "}·{" "}
+            <a href="https://gfix.space" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              gfix.space
+            </a>{" "}·{" "}
+            <a href="https://tubio.pro" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              tubio.pro
+            </a>{" "}· Mumbai, India
           </p>
         </header>
 
         <section className="resume-section">
           <h3 className="resume-section-label">Summary</h3>
           <p className="text-body-md leading-relaxed">
-            Independent developer shipping production tools at the intersection of AI coding agents and developer tooling. Building <strong>gfix</strong> (Rust + MCP merge resolver for AI agents) and <strong>tubio</strong> (Chrome MV3 SaaS — 4.8★, Chrome Web Store).
+            Independent engineer with 1+ year shipping production developer tools at the intersection of AI agents and Git workflows. Built <strong>gfix</strong> (Rust + MCP merge resolver) and <strong>Tubio</strong> (Chrome MV3 SaaS, 4.8★), both live and used by real users. Comfortable across the full stack — from Rust engine internals and Chrome extension service workers to React frontends and Rails APIs.
           </p>
         </section>
 
         <section className="resume-section">
-          <h3 className="resume-section-label">Skills</h3>
+          <h3 className="resume-section-label">Technical Skills</h3>
           <ul className="space-y-1 text-body-md leading-relaxed list-none p-0">
-            <li><strong>Languages:</strong> TypeScript, JavaScript, Rust, Python, Ruby</li>
+            <li><strong>Languages:</strong> Rust, TypeScript, JavaScript, Python, Ruby</li>
+            <li><strong>AI / Agents:</strong> Model Context Protocol (MCP), Claude API, OpenAI, Gemini, Ollama, prompt engineering</li>
             <li><strong>Frontend:</strong> React, Next.js (App Router), Tailwind CSS, Plasmo (MV3), HTML5 Canvas</li>
-            <li><strong>AI / Agents:</strong> Model Context Protocol (MCP), Claude API, OpenAI, Gemini, Ollama, BYO-key provider abstractions, prompt engineering</li>
-            <li><strong>Browser &amp; Extensions:</strong> Chrome MV3, VS Code (Marketplace + Open VSX), service workers, IndexedDB, content scripts, Innertube API</li>
+            <li><strong>Browser / Extensions:</strong> Chrome MV3, VS Code Extension API (Marketplace + Open VSX), service workers, IndexedDB, Innertube API</li>
+            <li><strong>Backend &amp; Infra:</strong> Node.js, Ruby on Rails 8, Sidekiq, REST APIs, Supabase, Vercel, Docker, Polar</li>
             <li><strong>Git / Systems:</strong> Git internals, rerere, AST-based merging (Mergiraf), worktrees, multi-agent workflows</li>
-            <li><strong>Backend &amp; APIs:</strong> Node.js, Ruby on Rails 8, Sidekiq, REST APIs, signed webhooks</li>
-            <li><strong>Cloud / Infra:</strong> Vercel, Supabase, Polar, Docker, ISR</li>
           </ul>
         </section>
 
@@ -61,68 +63,84 @@ export default function ResumePage() {
 
           <div className="mt-1">
             <div className="flex items-baseline justify-between gap-4 flex-wrap">
-              <p className="text-body-md font-semibold">Founder &amp; Engineer — gfix &amp; gitfix (Self-employed)</p>
+              <p className="text-body-md font-semibold">
+                Founder &amp; Engineer ·{" "}
+                <a href="https://gfix.space" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  gfix &amp; gitfix
+                </a>
+              </p>
               <p className="text-body-md text-on-surface-variant whitespace-nowrap">Mar 2026 – Present · Mumbai</p>
             </div>
-            <ul className="mt-1 list-disc pl-5 space-y-1 text-body-md leading-relaxed">
-              <li>Built <strong>gfix</strong> — a Rust CLI + MCP server that lets AI coding agents resolve git merge conflicts natively; closes the integration bottleneck as agents write in parallel.</li>
-              <li>Shipped <strong>gitfix</strong>, a VS Code extension (Marketplace + Open VSX) with a conflict tree, one-click fixes, and a full audit trail; keeps a human in the loop on agent-driven resolutions.</li>
-              <li>Engineered deterministic AST-level merging atop Mergiraf, cross-machine <em>rerere</em>-style replay, and a BYO-key AI layer abstracting OpenAI, Anthropic, Gemini, and Ollama — on a private Rust engine.</li>
+            <ul className="mt-1 list-none pl-0 space-y-1 text-body-md leading-relaxed">
+              <li className="resume-bullet">Architected <strong>gfix</strong> — a Rust CLI + MCP server that lets AI coding agents resolve git merge conflicts natively, eliminating the human bottleneck in parallel-agent workflows where multiple agents write to the same codebase.</li>
+              <li className="resume-bullet">Shipped <strong>gitfix</strong> VS Code extension (Marketplace + Open VSX) with a conflict tree, one-click fixes, and a full per-resolution audit trail — keeping humans in the loop on every agent-driven merge decision.</li>
+              <li className="resume-bullet">Engineered deterministic AST-level merging on top of Mergiraf, cross-machine rerere-style replay, and a BYO-key AI provider layer abstracting OpenAI, Anthropic, Gemini, and Ollama — all on a private Rust engine.</li>
             </ul>
-            <p className="mt-1 text-body-md"><strong>Technologies:</strong> Rust, Model Context Protocol (MCP), Mergiraf, VS Code Extension API, Open VSX, Git internals.</p>
+            <p className="mt-1 text-body-md text-on-surface-variant italic">Stack: Rust · MCP · Mergiraf · VS Code Extension API · Open VSX · Git internals</p>
           </div>
 
           <div className="mt-4">
             <div className="flex items-baseline justify-between gap-4 flex-wrap">
-              <p className="text-body-md font-semibold">Founder &amp; Engineer — Tubio (Self-employed)</p>
+              <p className="text-body-md font-semibold">
+                Founder &amp; Engineer ·{" "}
+                <a href="https://tubio.pro" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Tubio
+                </a>
+              </p>
               <p className="text-body-md text-on-surface-variant whitespace-nowrap">Sep 2025 – Present · Mumbai</p>
             </div>
-            <ul className="mt-1 list-disc pl-5 space-y-1 text-body-md leading-relaxed">
-              <li>Engineered bulk-download of up to 800 videos per session with sequential rate-limiting and IndexedDB persistence that survives MV3 service-worker restarts; sidesteps the 2024 PO Token gauntlet by reading from the user&apos;s authenticated session.</li>
-              <li>Shipped <em>Watch with Claude</em> — bundles transcript + evenly-spaced frame captures + a structured <code>report.md</code> so LLMs can ingest full multimodal video context; <strong>4.8★</strong> on the Chrome Web Store.</li>
+            <ul className="mt-1 list-none pl-0 space-y-1 text-body-md leading-relaxed">
+              <li className="resume-bullet">Built and shipped Tubio end-to-end — a Chrome MV3 SaaS achieving <strong>4.8★</strong> on the Chrome Web Store; downloads YouTube transcripts at volume with metadata and multimodal context the official YouTube Data API doesn&apos;t expose.</li>
+              <li className="resume-bullet">Engineered bulk download of up to 800 videos/session with sequential rate-limiting and IndexedDB persistence that survives MV3 service-worker restarts; bypassed the 2024 PoToken enforcement by reading from the user&apos;s authenticated session.</li>
+              <li className="resume-bullet">Shipped <em>Watch with Claude</em> — bundles transcript + evenly-spaced frame captures into a structured <code>report.md</code> for full multimodal video ingestion by LLMs; primary differentiating feature driving user retention.</li>
             </ul>
-            <p className="mt-1 text-body-md"><strong>Technologies:</strong> Plasmo, Chrome MV3, React, TypeScript, IndexedDB, Innertube API, Supabase, Polar.</p>
+            <p className="mt-1 text-body-md text-on-surface-variant italic">Stack: Plasmo · Chrome MV3 · React · TypeScript · IndexedDB · Innertube API · Supabase · Polar</p>
           </div>
 
           <div className="mt-4">
             <div className="flex items-baseline justify-between gap-4 flex-wrap">
-              <p className="text-body-md font-semibold">Web Developer — Trineteini Quantum (Internship)</p>
+              <p className="text-body-md font-semibold">
+                Web Developer (Intern) ·{" "}
+                <a href="https://dialclub.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Trineteini Quantum
+                </a>
+              </p>
               <p className="text-body-md text-on-surface-variant whitespace-nowrap">Jan 2025 – Mar 2025 · Remote</p>
             </div>
-            <ul className="mt-1 list-disc pl-5 space-y-1 text-body-md leading-relaxed">
-              <li>Shipped a full admin panel and social-media dashboard for <a href="https://dialclub.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">dialclub.org</a> — CRUD surfaces over users, content, and operational state, plus cross-channel publishing.</li>
-              <li>Built a role-based instructor dashboard and an event-setup workflow covering schedule, capacity, and lifecycle from draft to published.</li>
-              <li>Implemented a dynamic quiz module (question-bank backed) and integrated a conversational chatbot onto the public site.</li>
+            <ul className="mt-1 list-none pl-0 space-y-1 text-body-md leading-relaxed">
+              <li className="resume-bullet">Delivered a full admin panel and social-media dashboard for dialclub.org — CRUD surfaces over users, content, and operational state with cross-channel publishing.</li>
+              <li className="resume-bullet">Built role-based instructor dashboard, event lifecycle management (draft → published), a question-bank-backed quiz module, and a public-facing conversational chatbot.</li>
             </ul>
-            <p className="mt-1 text-body-md"><strong>Technologies:</strong> React, Node.js, REST APIs, Webhooks.</p>
+            <p className="mt-1 text-body-md text-on-surface-variant italic">Stack: React · Node.js · REST APIs · Webhooks</p>
           </div>
-        </section>
-
-        <section className="resume-section">
-          <h3 className="resume-section-label">Open Source</h3>
-          <p className="text-body-md leading-relaxed">
-            Contributing to <a href="https://github.com/GitoxideLabs/gitoxide" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">gitoxide</a> and <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">mcp-py-sdk</a>; merged PRs to follow.
-          </p>
         </section>
 
         <section className="resume-section">
           <h3 className="resume-section-label">Projects</h3>
           <div className="mt-1">
-            <p className="text-body-md leading-relaxed">
-              <strong>scribed</strong> —{" "}
-              <a href="https://github.com/ameyypawar/scribed" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">github.com/ameyypawar/scribed</a>
-              {" "}— Self-hostable, provider-agnostic audio transcription microservice for customer-support platforms (REST + signed webhooks).{" "}
-              <span className="text-on-surface-variant">Tech: Ruby, Rails 8, Postgres, Sidekiq, Docker.</span>
-            </p>
+            <div className="flex items-baseline justify-between gap-4 flex-wrap">
+              <p className="text-body-md font-semibold">
+                scribed ·{" "}
+                <a href="https://github.com/ameyypawar/scribed" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-normal">
+                  github.com/ameyypawar/scribed
+                </a>
+              </p>
+              <p className="text-body-md text-on-surface-variant whitespace-nowrap">2024</p>
+            </div>
+            <ul className="mt-1 list-none pl-0 space-y-1 text-body-md leading-relaxed">
+              <li className="resume-bullet">Built a self-hostable, provider-agnostic audio transcription microservice for customer-support platforms, with pluggable backends across whisper.cpp, faster-whisper, Deepgram, and OpenAI — swappable via environment variable without code changes.</li>
+            </ul>
+            <p className="mt-1 text-body-md text-on-surface-variant italic">Stack: Ruby · Rails 8 · Postgres · Sidekiq · Docker · REST</p>
           </div>
         </section>
 
         <section className="resume-section">
           <h3 className="resume-section-label">Education</h3>
           <div className="flex items-baseline justify-between gap-4 flex-wrap">
-            <p className="text-body-md"><strong>Vidyalankar Institute of Technology</strong> — BTech, Electronics and Computer Science</p>
+            <p className="text-body-md"><strong>Vidyalankar Institute of Technology, Mumbai</strong></p>
             <p className="text-body-md text-on-surface-variant whitespace-nowrap">2022 – 2027</p>
           </div>
+          <p className="text-body-md text-on-surface-variant mt-1">BTech, Electronics and Computer Science</p>
         </section>
       </article>
     </main>

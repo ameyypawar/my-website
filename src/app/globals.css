@@ -132,7 +132,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media print {
   @page {
     size: A4;
-    margin: 0.35in;
+    margin: 0.28in;
   }
 
   header,
@@ -167,8 +167,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
     margin: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
-    font-size: 9pt;
-    line-height: 1.22;
+    font-size: 8.5pt;
+    line-height: 1.2;
     color: #000000 !important;
   }
 
@@ -184,18 +184,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 
   #resume .resume-h2 {
-    font-size: 16pt;
+    font-size: 15pt;
     margin: 0;
   }
   #resume .resume-contact {
-    font-size: 8.5pt;
+    font-size: 8pt;
     margin-top: 0.15rem;
   }
 
   #resume .resume-section-label {
     color: #000000 !important;
     border-bottom: 1px solid #999999 !important;
-    font-size: 11pt;
+    font-size: 10.5pt;
     letter-spacing: 0.01em;
     font-weight: 700;
     padding-bottom: 0.08rem;
@@ -203,16 +203,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 
   #resume .resume-section {
-    margin-top: 0.22rem;
+    margin-top: 0.18rem;
     break-inside: avoid;
     page-break-inside: avoid;
   }
   #resume header.resume-header h2 {
-    font-size: 16pt;
+    font-size: 15pt;
     margin: 0;
   }
   #resume header.resume-header p {
-    font-size: 8.5pt;
+    font-size: 8pt;
     margin-top: 0.15rem;
   }
   #resume h3 {
@@ -235,5 +235,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
   #resume .resume-section > div {
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Resume bullets — ▸ triangle marker (screen + print)
+   ─────────────────────────────────────────────────────────────── */
+.resume-bullet {
+  position: relative;
+  padding-left: 1rem;
+}
+.resume-bullet::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-on-surface-variant);
+  line-height: inherit;
+}
+
+@media print {
+  #resume .resume-bullet {
+    padding-left: 0.9rem;
+  }
+  #resume .resume-bullet::before {
+    color: #000 !important;
   }
 }
