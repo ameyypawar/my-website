@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight, Download } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 export default function Hero() {
@@ -5,7 +7,7 @@ export default function Hero() {
     <Reveal>
       <section aria-labelledby="hero-heading">
         <p className="text-label-md uppercase tracking-[0.2em] text-on-surface-variant">
-          Independent developer
+          Software Engineer · Developer Tooling & AI Agents
         </p>
         <h1
           id="hero-heading"
@@ -17,14 +19,14 @@ export default function Hero() {
         <div className="mt-6 h-px w-16 bg-primary/70" aria-hidden="true" />
 
         <p className="text-body-lg text-on-surface-variant mt-6 max-w-2xl">
-          Independent developer building tools that make everyday software feel
-          less painful. Currently shipping tubio — focus and transcripts for
-          YouTube — and gitfix, a VS Code extension that resolves merge
-          conflicts. Always poking at terminals, agents, and the loop between
-          idea and deploy.
+          Final-year BTech in Electronics & Computer Science — graduating{" "}
+          <strong className="font-semibold text-on-surface">May 2027</strong>.
+          Building developer tooling in Rust and TypeScript at the intersection
+          of AI coding agents and Git. Open to internships and new-grad roles —
+          Mumbai, remote, or relocation.
         </p>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap gap-3">
           <a
             href="mailto:ameypawar1237@gmail.com"
             className="group inline-flex items-center gap-2 rounded-md-sm border border-outline/60 px-5 py-2.5 text-body-md text-on-surface hover:border-primary hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
@@ -34,9 +36,19 @@ export default function Hero() {
               aria-hidden="true"
               className="transition-transform group-hover:translate-x-0.5"
             >
-              →
+              <ArrowRight className="h-4 w-4" />
             </span>
           </a>
+
+          <Link
+            href="/resume"
+            className="group inline-flex items-center gap-2 rounded-md-sm border border-outline/60 px-5 py-2.5 text-body-md text-on-surface hover:border-primary hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          >
+            Download resume
+            <span aria-hidden="true" className="transition-transform">
+              <Download className="h-4 w-4" />
+            </span>
+          </Link>
         </div>
       </section>
     </Reveal>
