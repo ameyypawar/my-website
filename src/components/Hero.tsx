@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
@@ -40,15 +39,16 @@ export default function Hero() {
             </span>
           </a>
 
-          <Link
-            href="/resume"
+          <a
+            href="/amey-pawar-resume.pdf"
+            download
             className="group inline-flex items-center gap-2 rounded-md-sm border border-outline/60 px-5 py-2.5 text-body-md text-on-surface hover:border-primary hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
           >
             Download resume
             <span aria-hidden="true" className="transition-transform">
               <Download className="h-4 w-4" />
             </span>
-          </Link>
+          </a>
         </div>
       </section>
     </Reveal>
