@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Experience from "@/components/Experience";
+import Skills from "@/components/Skills";
 import OpenSource from "@/components/OpenSource";
 import PlayBreakout from "@/components/PlayBreakout";
 
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <FeaturedProjects />
         <Experience />
+        <Skills />
         <OpenSource />
       </main>
       <PlayBreakout />
