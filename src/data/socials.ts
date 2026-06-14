@@ -4,5 +4,4 @@ export const socials: Social[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ameypawar77/", icon: "linkedin" },
   { label: "Email", href: "mailto:ameypawar1237@gmail.com", icon: "mail" },
   { label: "X", href: "https://x.com/ameyypawr", icon: "x" },
-  { label: "Instagram", href: "https://instagram.com/sir_amey", icon: "instagram" },
 ];

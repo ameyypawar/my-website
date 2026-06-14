@@ -17,12 +17,12 @@ const geistMono = Geist_Mono({
 
 // TODO: favicon + OG image
 export const metadata: Metadata = {
-  title: "Amey Pawar — Independent Developer",
+  title: "Amey Pawar — Software Engineer",
   description:
-    "Independent developer building tubio and gitfix. Tools that make everyday software work less painful.",
+    "Software engineer building developer tooling and AI-agent infrastructure in Rust and TypeScript. Maintainer of gfix and tubio. Final-year BTech, graduating May 2027.",
   openGraph: {
-    title: "Amey Pawar — Independent Developer",
-    description: "Independent developer building tubio and gitfix.",
+    title: "Amey Pawar — Software Engineer",
+    description: "Software engineer · gfix · tubio · final-year BTech, graduating May 2027.",
     type: "website",
   },
   twitter: { card: "summary_large_image", creator: "@ameyypawr" },
