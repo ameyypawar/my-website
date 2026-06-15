@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 
 // TODO: favicon + OG image
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ameypawar.com"),
   title: "Amey Pawar — Software Engineer",
   description:
     "Software engineer building developer tooling and AI-agent infrastructure in Rust and TypeScript. Maintainer of gfix and tubio. Final-year BTech, graduating May 2027.",
