@@ -19,11 +19,18 @@ function stripHttps(url: string): string {
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const isLive = project.status === "live";
-  const statusClasses = isLive
-    ? "bg-primary/15 text-primary"
-    : "border border-outline/50 text-on-surface-variant";
-  const statusLabel = isLive ? "LIVE" : "OPEN SOURCE";
+  const statusClasses =
+    project.status === "live"
+      ? "bg-primary/15 text-primary"
+      : project.status === "beta"
+      ? "bg-on-surface-variant/15 text-on-surface"
+      : "border border-outline/50 text-on-surface-variant";
+  const statusLabel =
+    project.status === "live"
+      ? "LIVE"
+      : project.status === "beta"
+      ? "BETA"
+      : "OPEN SOURCE";
 
   return (
     <article className="bg-surface-container hover:bg-surface-container-high focus-within:bg-surface-container-high rounded-md-lg p-6 transition-colors duration-200 motion-safe:hover:scale-[1.01] group flex h-full flex-col border border-outline/30">
