@@ -4,6 +4,7 @@ export type Project = {
   name: string;
   tagline: string;
   url: string;
+  linkLabel?: string;
   repo?: string;
   status: ProjectStatus;
 };
@@ -38,6 +39,7 @@ export const featuredProjects: Project[] = [
     tagline:
       "MIT Chrome MV3 extension that auto-detects listed items on any page and exports to CSV — deterministic, no AI, no tracking.",
     url: "https://chromewebstore.google.com/detail/listpick-%E2%80%94-export-any-lis/iiiemjbnkofeafjiaflfhibehcnchcgh",
+    linkLabel: "Chrome Web Store",
     repo: "https://github.com/ameyypawar/pluck",
     status: "beta",
   },

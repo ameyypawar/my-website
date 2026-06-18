@@ -56,7 +56,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           rel="noopener noreferrer"
           className="text-primary hover:underline inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-md-sm"
         >
-          {stripHttps(project.url)}
+          {project.linkLabel ?? stripHttps(project.url)}
           <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
         </a>
         {project.repo && (
