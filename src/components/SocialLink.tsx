@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Heart, Mail } from "lucide-react";
 import type { Social } from "@/data/socials";
 
 // Brand icons as inline SVGs — lucide-react 1.x dropped brand icons
@@ -27,6 +27,7 @@ const XIcon = (
 );
 
 const iconMap: Record<Social["icon"], React.ReactNode> = {
+  sponsor: <Heart className="w-5 h-5 fill-current" aria-hidden="true" />,
   github: GithubIcon,
   linkedin: LinkedinIcon,
   mail: <Mail className="w-5 h-5" aria-hidden="true" />,
