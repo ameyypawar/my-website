@@ -42,29 +42,6 @@ const MERGED: PR[] = [
     url: "https://github.com/tokio-rs/tokio/pull/8196",
     status: "merged",
   },
-];
-
-const IN_REVIEW: PR[] = [
-  {
-    repo: "gitbutlerapp/gitbutler",
-    number: 14144,
-    title: "Fix crash on conflicted binary files in edit mode",
-    oneLine:
-      "Null-deref crash on edit-mode exit when a conflicted binary file is present; guarded looksConflicted() against null content.",
-    language: "TypeScript",
-    url: "https://github.com/gitbutlerapp/gitbutler/pull/14144",
-    status: "open",
-  },
-  {
-    repo: "gitbutlerapp/gitbutler",
-    number: 14152,
-    title: "Fix \"part N of M\" numbering in CLI stacked-PR footers",
-    oneLine:
-      "Off-by-one in generate_footer (Rust); the nth index was the inverse of the <kbd> numbering.",
-    language: "Rust",
-    url: "https://github.com/gitbutlerapp/gitbutler/pull/14152",
-    status: "open",
-  },
   {
     repo: "GitoxideLabs/gitoxide",
     number: 2637,
@@ -73,7 +50,37 @@ const IN_REVIEW: PR[] = [
       "Remote::save_to was writing to a foreign config section when a global override existed; filtered the write target to the local file's metadata.",
     language: "Rust",
     url: "https://github.com/GitoxideLabs/gitoxide/pull/2637",
-    status: "open",
+    status: "merged",
+  },
+  {
+    repo: "windmill-labs/windmill",
+    number: 9566,
+    title: "fix(folders): allow hyphens in folder names",
+    oneLine:
+      "Relaxed the folder-name validator to accept hyphen characters, matching the rest of the path validators across the codebase.",
+    language: "Rust",
+    url: "https://github.com/windmill-labs/windmill/pull/9566",
+    status: "merged",
+  },
+  {
+    repo: "gitbutlerapp/gitbutler",
+    number: 14245,
+    title: "Add a diff font size setting",
+    oneLine:
+      "Added a configurable diff font size to GitButler's editor; persists across sessions via the settings store.",
+    language: "TypeScript",
+    url: "https://github.com/gitbutlerapp/gitbutler/pull/14245",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2622,
+    title: "Add tests for Repository::open_mailmap and open_mailmap_into",
+    oneLine:
+      "Added regression tests for previously-untested mailmap loading paths on Repository::open_mailmap and open_mailmap_into.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2622",
+    status: "merged",
   },
 ];
 
@@ -149,18 +156,8 @@ export default function OpenSource() {
           ))}
         </div>
 
-        <h3 className="mt-8 text-label-md uppercase tracking-[0.15em] text-on-surface-variant">
-          In review
-        </h3>
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {IN_REVIEW.map((pr) => (
-            <PRCard key={`${pr.repo}-${pr.number}`} pr={pr} />
-          ))}
-        </div>
-
         <p className="text-label-md text-on-surface-variant mt-8">
-          376 contributions in the last year · 54 pull requests opened across 5
-          upstream projects.
+          7 PRs merged across 4 upstream projects · 376 contributions in the last year.
         </p>
       </section>
     </Reveal>
