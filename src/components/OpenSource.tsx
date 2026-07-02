@@ -13,6 +13,106 @@ type PR = {
 
 const MERGED: PR[] = [
   {
+    repo: "tokio-rs/tokio",
+    number: 8196,
+    title: "net: accept ConnectionReset in shutdown_after_tcp_reset test",
+    oneLine:
+      "Fixed a flaky tokio::net test on FreeBSD where shutdown() can return ConnectionReset if the kernel processes the peer RST first.",
+    language: "Rust",
+    url: "https://github.com/tokio-rs/tokio/pull/8196",
+    status: "merged",
+  },
+  {
+    repo: "tower-rs/tower",
+    number: 874,
+    title: "fix(balance): clear cached P2C ready index after a discovery removal",
+    oneLine:
+      "Fixed the P2C load balancer serving a stale cached ready-index after a service was removed via discovery, which could route to a dropped endpoint.",
+    language: "Rust",
+    url: "https://github.com/tower-rs/tower/pull/874",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2673,
+    title: "fix: don't report a tree of only empty directories as untracked",
+    oneLine:
+      "Fixed status wrongly flagging a tree that contains only empty directories as untracked.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2673",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2669,
+    title: "fix: preserve the underlying error when a reqwest request fails without a status",
+    oneLine:
+      "Preserved the underlying transport error when an HTTP request fails without a status code, instead of collapsing it into a generic error.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2669",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2663,
+    title: "fix: seed fast pseudo-random numbers to differ across processes",
+    oneLine:
+      "Fixed the fast PRNG seed so generated values differ across processes rather than colliding on identical seeds.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2663",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2637,
+    title: "fix: write new remote sections to the local config file",
+    oneLine:
+      "Remote::save_to was writing to a foreign config section when a global override existed; filtered the write target to the local file's metadata.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2637",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2622,
+    title: "Add tests for Repository::open_mailmap and open_mailmap_into",
+    oneLine:
+      "Added regression tests for previously-untested mailmap loading paths on Repository::open_mailmap and open_mailmap_into.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2622",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2664,
+    title: "Document that writing the index does not refresh the tree-cache extension",
+    oneLine:
+      "Documented that writing the index does not refresh the tree-cache extension — clarifying a subtle invariant for API consumers.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2664",
+    status: "merged",
+  },
+  {
+    repo: "GitoxideLabs/gitoxide",
+    number: 2675,
+    title: "gix-pack: add a benchmark for pack generation from loose objects",
+    oneLine:
+      "Added a benchmark covering pack generation from loose objects, giving gix-pack performance-regression coverage on that path.",
+    language: "Rust",
+    url: "https://github.com/GitoxideLabs/gitoxide/pull/2675",
+    status: "merged",
+  },
+  {
+    repo: "qdrant/rust-client",
+    number: 286,
+    title: "feat(client): opt-in connection check on Qdrant::build()",
+    oneLine:
+      "Added an opt-in connection health check to the client builder so a misconfigured endpoint fails fast at build time instead of on first query.",
+    language: "Rust",
+    url: "https://github.com/qdrant/rust-client/pull/286",
+    status: "merged",
+  },
+  {
     repo: "windmill-labs/windmill",
     number: 9460,
     title: "fix(python): escape reserved-keyword step ids in wrapper codegen",
@@ -33,26 +133,6 @@ const MERGED: PR[] = [
     status: "merged",
   },
   {
-    repo: "tokio-rs/tokio",
-    number: 8196,
-    title: "net: accept ConnectionReset in shutdown_after_tcp_reset test",
-    oneLine:
-      "Fixed a flaky tokio::net test on FreeBSD where shutdown() can return ConnectionReset if the kernel processes the peer RST first.",
-    language: "Rust",
-    url: "https://github.com/tokio-rs/tokio/pull/8196",
-    status: "merged",
-  },
-  {
-    repo: "GitoxideLabs/gitoxide",
-    number: 2637,
-    title: "fix: write new remote sections to the local config file",
-    oneLine:
-      "Remote::save_to was writing to a foreign config section when a global override existed; filtered the write target to the local file's metadata.",
-    language: "Rust",
-    url: "https://github.com/GitoxideLabs/gitoxide/pull/2637",
-    status: "merged",
-  },
-  {
     repo: "windmill-labs/windmill",
     number: 9566,
     title: "fix(folders): allow hyphens in folder names",
@@ -70,16 +150,6 @@ const MERGED: PR[] = [
       "Added a configurable diff font size to GitButler's editor; persists across sessions via the settings store.",
     language: "TypeScript",
     url: "https://github.com/gitbutlerapp/gitbutler/pull/14245",
-    status: "merged",
-  },
-  {
-    repo: "GitoxideLabs/gitoxide",
-    number: 2622,
-    title: "Add tests for Repository::open_mailmap and open_mailmap_into",
-    oneLine:
-      "Added regression tests for previously-untested mailmap loading paths on Repository::open_mailmap and open_mailmap_into.",
-    language: "Rust",
-    url: "https://github.com/GitoxideLabs/gitoxide/pull/2622",
     status: "merged",
   },
 ];
@@ -157,7 +227,7 @@ export default function OpenSource() {
         </div>
 
         <p className="text-label-md text-on-surface-variant mt-8">
-          7 PRs merged across 4 upstream projects · 376 contributions in the last year.
+          14 PRs merged across 6 upstream projects — tokio, tower, gitoxide, qdrant, windmill, and GitButler.
         </p>
       </section>
     </Reveal>
