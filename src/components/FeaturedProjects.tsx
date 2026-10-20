@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 import ProjectCard from "@/components/ProjectCard";
-import { featuredProjects } from "@/data/projects";
+import { projects } from "@/data/resume";
 
 export default function FeaturedProjects() {
   return (
@@ -10,7 +10,7 @@ export default function FeaturedProjects() {
           Featured work
         </h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuredProjects.map((p) => (
+          {projects.map((p) => (
             <ProjectCard key={p.name} project={p} />
           ))}
         </div>
