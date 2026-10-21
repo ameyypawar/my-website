@@ -18,13 +18,14 @@ function stripHttps(url: string): string {
   return url.replace(/^https?:\/\//, "");
 }
 
+// One cell of the homepage project grid.
 export default function ProjectCard({ project }: { project: Project }) {
   const statusClasses =
     project.status === "live"
-      ? "bg-primary/15 text-primary"
+      ? "bg-primary/10 text-primary"
       : project.status === "beta"
-      ? "bg-on-surface-variant/15 text-on-surface"
-      : "border border-outline/50 text-on-surface-variant";
+      ? "bg-accent/25 text-on-surface"
+      : "border border-outline text-on-surface-variant";
   const statusLabel =
     project.status === "live"
       ? "LIVE"
@@ -33,9 +34,9 @@ export default function ProjectCard({ project }: { project: Project }) {
       : "OPEN SOURCE";
 
   return (
-    <article className="bg-surface-container hover:bg-surface-container-high focus-within:bg-surface-container-high rounded-md-lg p-6 transition-colors duration-200 motion-safe:hover:scale-[1.01] group flex h-full flex-col border border-outline/30">
+    <article className="group flex h-full flex-col px-6 py-5 hover:bg-surface-container/60 transition-colors">
       <div className="flex items-start justify-between gap-3">
-        <h3 className="text-title-lg font-medium text-on-surface">
+        <h3 className="text-body-lg font-semibold text-on-surface">
           {project.name}
         </h3>
         <span
@@ -45,11 +46,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
 
-      <p className="text-body-md text-on-surface-variant mt-3 flex-1">
+      <p className="text-body-md text-on-surface-variant mt-2 flex-1">
         {project.tagline}
       </p>
 
-      <div className="mt-4 flex items-center gap-4 text-label-md">
+      <div className="mt-3 flex items-center gap-4 text-label-md">
         <a
           href={project.url}
           target="_blank"

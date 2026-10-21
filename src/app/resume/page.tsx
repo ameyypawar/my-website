@@ -36,9 +36,9 @@ function ExternalLink({ href, children }: { href: string; children: ReactNode })
 
 export default function ResumePage() {
   return (
-    <main className="flex-1 w-full max-w-[1024px] mx-auto px-6 sm:px-10 py-24">
-      <h1 className="text-display-lg font-semibold tracking-tight">Resume</h1>
-      <div className="mt-6 h-px w-16 bg-primary/70" aria-hidden="true" />
+    <main className="flex-1 px-6 sm:px-8 py-12">
+      <h1 className="font-serif text-display-lg tracking-tight">Resume</h1>
+      <div className="mt-4 h-px w-16 bg-primary/70" aria-hidden="true" />
 
       <div className="mt-8 flex flex-wrap gap-3" data-print-hide>
         <PrintButton />
@@ -53,7 +53,7 @@ export default function ResumePage() {
 
       <article
         id="resume"
-        className="mt-12 mx-auto max-w-[800px] text-body-md leading-relaxed text-on-surface"
+        className="mt-10 text-body-md leading-relaxed text-on-surface"
       >
         <div className="resume-header">
           <h2 className="resume-name">{profile.name}</h2>
@@ -141,7 +141,7 @@ export default function ResumePage() {
           <h3 className="resume-section-label">Skills</h3>
           {skills.map((group) => (
             <p key={group.label}>
-              <strong>{group.label}:</strong> {group.items}
+              <strong>{group.label}:</strong> {group.items.join(", ")}
             </p>
           ))}
         </section>

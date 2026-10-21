@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import ContactFooter from "@/components/ContactFooter";
@@ -14,6 +14,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 const [o2, gix] = openSource.top;
@@ -36,7 +43,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#121212",
+  themeColor: "#FFFDF8",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -47,12 +55,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-surface text-on-surface font-sans">
-        <Nav />
-        {children}
-        <ContactFooter />
+      <body className="min-h-full bg-canvas text-on-surface font-sans">
+        <div className="backdrop" aria-hidden="true" />
+        <div className="sheet flex flex-col">
+          <Nav />
+          {children}
+          <ContactFooter />
+        </div>
       </body>
     </html>
   );

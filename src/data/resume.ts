@@ -21,6 +21,8 @@ export const profile = {
   github: "https://github.com/ameyypawar",
   linkedin: "https://www.linkedin.com/in/ameypawar77/",
   x: "https://x.com/ameyypawr",
+  // Profile photo under public/, e.g. "/avatar.jpg". Unset shows initials.
+  avatar: undefined as string | undefined,
 };
 
 export function stripProtocol(url: string): string {
@@ -392,23 +394,41 @@ export const education = {
   dates: "2022 – May 2027 (expected)",
 };
 
-export type SkillGroup = { label: string; items: string };
+export type SkillGroup = { label: string; items: string[] };
 
 export const skills: SkillGroup[] = [
-  { label: "Languages", items: "Rust, TypeScript, JavaScript, Python, SQL, Ruby" },
+  {
+    label: "Languages",
+    items: ["Rust", "TypeScript", "JavaScript", "Python", "SQL", "Ruby"],
+  },
   {
     label: "Observability",
-    items:
-      "Logs, metrics and traces, PromQL, OpenTelemetry (OTLP), alerting, Vector Remap Language (VRL)",
+    items: [
+      "Logs, metrics and traces",
+      "PromQL",
+      "OpenTelemetry (OTLP)",
+      "Alerting",
+      "Vector Remap Language (VRL)",
+    ],
   },
   {
     label: "Git & systems",
-    items:
-      "Git internals (packfiles, refspecs, revspecs, rename detection, transport), async Rust (tokio), Model Context Protocol (MCP)",
+    items: [
+      "Git internals (packfiles, refspecs, revspecs, rename detection, transport)",
+      "Async Rust (tokio)",
+      "Model Context Protocol (MCP)",
+    ],
   },
   {
     label: "Web & tools",
-    items:
-      "React, Next.js, Node.js, PostgreSQL, Chrome extensions (MV3), VS Code extension API, Docker",
+    items: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Chrome extensions (MV3)",
+      "VS Code extension API",
+      "Docker",
+    ],
   },
 ];

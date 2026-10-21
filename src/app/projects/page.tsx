@@ -46,9 +46,9 @@ export default async function ProjectsPage() {
   const repos = await getRepos();
 
   return (
-    <main className="flex-1 w-full max-w-[1024px] mx-auto px-6 sm:px-10 py-24">
-      <h1 className="text-display-lg font-semibold tracking-tight">Projects</h1>
-      <div className="mt-6 h-px w-16 bg-primary/70" aria-hidden="true" />
+    <main className="flex-1 px-6 sm:px-8 py-12">
+      <h1 className="font-serif text-display-lg tracking-tight">Projects</h1>
+      <div className="mt-4 h-px w-16 bg-primary/70" aria-hidden="true" />
       <p className="text-body-lg text-on-surface-variant mt-6 max-w-2xl">
         Everything I&apos;ve shipped in public — auto-synced from GitHub.
       </p>
@@ -68,7 +68,7 @@ export default async function ProjectsPage() {
           .
         </p>
       ) : (
-        <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 list-none p-0">
+        <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 list-none p-0">
           {repos
             .filter((r) => !isHidden(r))
             .sort(
