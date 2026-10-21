@@ -67,7 +67,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             className="text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-md-sm"
           >
             <GithubMark className="w-3.5 h-3.5" />
-            Code
+            {project.repoLabel ?? "Code"}
           </a>
         )}
       </div>

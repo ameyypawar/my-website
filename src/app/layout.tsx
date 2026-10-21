@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import ContactFooter from "@/components/ContactFooter";
+import { openSource, profile } from "@/data/resume";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,15 +16,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO: favicon + OG image
+const [o2, gix] = openSource.top;
+const title = `${profile.name} — Software Engineer (Observability & Version Control)`;
+
+// TODO: favicon
 export const metadata: Metadata = {
   metadataBase: new URL("https://ameypawar.com"),
-  title: "Amey Pawar — Software Engineer",
-  description:
-    "Software engineer building developer tooling and AI-agent infrastructure in Rust and TypeScript. Maintainer of gfix and tubio. Final-year BTech, graduating May 2027.",
+  title,
+  description: `Software engineer working on observability and version control in Rust and TypeScript, with ${openSource.merged} merged open-source PRs, including ${o2.merged} in ${o2.name} and ${gix.merged} in ${gix.name}. Final-year BTech, graduating May 2027. Open to new-grad roles, internships and contract work.`,
   openGraph: {
-    title: "Amey Pawar — Software Engineer",
-    description: "Software engineer · gfix · tubio · final-year BTech, graduating May 2027.",
+    title,
+    description: `${profile.headline} · ${openSource.merged} merged open-source PRs · graduating May 2027`,
     type: "website",
   },
   twitter: { card: "summary_large_image", creator: "@ameyypawr" },

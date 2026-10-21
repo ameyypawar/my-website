@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { openSource, profile } from "@/data/resume";
 
 export const runtime = "edge";
-export const alt = "Amey Pawar — Software Engineer · Developer Tooling & AI Agents";
+export const alt = `${profile.name} — ${profile.headline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -31,7 +32,7 @@ export default async function OpenGraphImage() {
               display: "flex",
             }}
           >
-            Software Engineer · Developer Tooling & AI Agents
+            {profile.headline}
           </div>
           <div
             style={{
@@ -65,6 +66,9 @@ export default async function OpenGraphImage() {
             color: "#B0B0B0",
           }}
         >
+          <div style={{ display: "flex" }}>
+            {`${openSource.merged} merged open-source PRs · ${openSource.top.map((p) => p.name).join(" · ")}`}
+          </div>
           <div style={{ display: "flex" }}>Final-year BTech · graduating May 2027 · Mumbai</div>
           <div style={{ display: "flex", color: "#A3D262" }}>ameypawar.com</div>
         </div>
