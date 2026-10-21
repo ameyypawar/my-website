@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette — MD3 dark */
-  --color-surface: #121212;
-  --color-surface-container: #1E1E1E;
-  --color-surface-container-high: #2A2A2A;
-  --color-primary: #A3D262;
-  --color-on-surface: #E8E8E8;
-  --color-on-surface-variant: #B0B0B0;
-  --color-outline: #6F6F6F;
+  /* Palette — light only, after Van Gogh: warm paper, ink, cobalt, chrome yellow */
+  --color-canvas: #DCE5F2;
+  --color-surface: #FFFDF8;
+  --color-surface-container: #F7F2E8;
+  --color-surface-container-high: #EFE7D6;
+  --color-primary: #1E4BB8;
+  --color-accent: #F2B705;
+  --color-on-surface: #1B1A17;
+  --color-on-surface-variant: #5B564D;
+  --color-outline: #CBC2B0;
 
   /* Radii — prefixed md- to avoid clashing with Tailwind's default rounded-md */
   --radius-md-sm: 4px;
   --radius-md-md: 12px;
   --radius-md-lg: 16px;
 
-  /* Type scale — MD3 in Geist */
-  --text-display-lg: clamp(36px, 8.5vw, 57px);
-  --text-display-lg--line-height: 1.1;
+  /* Type scale — Geist, with Instrument Serif for display */
+  --text-display-lg: clamp(40px, 9vw, 56px);
+  --text-display-lg--line-height: 1.05;
   --text-headline-lg: 32px;
   --text-headline-lg--line-height: 1.2;
-  --text-title-lg: 22px;
-  --text-title-lg--line-height: 1.2;
+  --text-title-lg: 20px;
+  --text-title-lg--line-height: 1.25;
   --text-body-lg: 16px;
   --text-body-lg--line-height: 1.5;
   --text-body-md: 14px;
@@ -31,14 +33,68 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
 }
 
 html, body {
-  background-color: var(--color-surface);
+  background-color: var(--color-canvas);
   color: var(--color-on-surface);
 }
 
 button, a { -webkit-tap-highlight-color: transparent; }
+
+/* ───────────────────────────────────────────────────────────────
+   Artwork — .backdrop fills the viewport behind the sheet; .art-window
+   shows the same fixed image through the top of the homepage sheet.
+   --art is a starry-sky placeholder until the generated painting
+   replaces it (e.g. url("/art/backdrop.webp") center / cover).
+   ─────────────────────────────────────────────────────────────── */
+:root {
+  --art:
+    radial-gradient(circle at 82% 14%, #FFF3B0 0 2.5%, #F2B705 3% 5.5%, rgba(242, 183, 5, 0.35) 6% 9%, transparent 9.5%),
+    radial-gradient(circle at 18% 22%, #FFF3B0 0 0.8%, rgba(242, 183, 5, 0.5) 1.1% 2.4%, transparent 2.8%),
+    radial-gradient(circle at 40% 10%, #FFF3B0 0 0.6%, rgba(242, 183, 5, 0.45) 0.9% 2%, transparent 2.4%),
+    radial-gradient(circle at 62% 30%, #FFF3B0 0 0.7%, rgba(242, 183, 5, 0.45) 1% 2.2%, transparent 2.6%),
+    radial-gradient(circle at 8% 60%, #FFF3B0 0 0.6%, rgba(242, 183, 5, 0.4) 0.9% 2%, transparent 2.4%),
+    radial-gradient(circle at 92% 70%, #FFF3B0 0 0.6%, rgba(242, 183, 5, 0.4) 0.9% 2%, transparent 2.4%),
+    repeating-radial-gradient(ellipse at 45% 38%, rgba(255, 255, 255, 0.1) 0 6px, transparent 6px 22px),
+    radial-gradient(ellipse at 45% 38%, #5B8DEF 0%, transparent 45%),
+    linear-gradient(180deg, #16357F 0%, #1E4BB8 45%, #2A7F62 82%, #1F5A44 100%);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--art);
+  background-size: cover;
+}
+
+.art-window {
+  background: var(--art);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* The page: a centred sheet of paper over the artwork. */
+.sheet {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  min-height: 100vh;
+  margin-inline: auto;
+  background: var(--color-surface);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-outline) 70%, transparent),
+    0 24px 80px -20px rgba(16, 32, 80, 0.45);
+}
+
+/* Highlighter stroke in chrome yellow. */
+.marker {
+  background-image: linear-gradient(transparent 60%, color-mix(in srgb, var(--color-accent) 55%, transparent) 60%);
+  padding-inline: 0.1em;
+}
 
 .reveal { opacity: 0; transform: translateY(4px); transition: opacity 400ms ease, transform 400ms ease; }
 .reveal[data-revealed="true"] { opacity: 1; transform: translateY(0); }
@@ -170,6 +226,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   header,
   footer,
   .iris-layer,
+  .backdrop,
+  .art-window,
   [data-print-hide] {
     display: none !important;
   }
@@ -178,6 +236,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
   body {
     background: #ffffff !important;
     color: #000000 !important;
+  }
+
+  .sheet {
+    display: block !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
   }
 
   main {

@@ -58,7 +58,7 @@ export default function Home() {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="flex-1 w-full max-w-[1024px] mx-auto px-6 sm:px-10 py-24">
+      <main className="flex-1">
         <Hero />
         <Experience />
         <OpenSource />

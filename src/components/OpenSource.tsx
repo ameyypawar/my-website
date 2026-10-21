@@ -1,71 +1,72 @@
-import Reveal from "@/components/Reveal";
 import { ArrowUpRight } from "lucide-react";
+import Section from "@/components/Section";
 import { asOf, highlights, openSource, type HighlightPR } from "@/data/resume";
 
-function PRCard({ pr }: { pr: HighlightPR }) {
-  return (
-    <a
-      href={`https://github.com/${pr.repo}/pull/${pr.number}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-surface-container hover:bg-surface-container-high rounded-md-lg p-5 border border-outline/30 transition-colors duration-200 motion-safe:hover:scale-[1.01] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 group flex h-full flex-col"
-    >
-      <div className="flex items-start justify-between gap-3">
-        <span className="text-label-md uppercase tracking-[0.15em] text-on-surface-variant">
-          {pr.repo} · #{pr.number}
-        </span>
-        <span className="text-[10px] uppercase tracking-wider font-medium px-2 py-0.5 rounded-full shrink-0 bg-primary/15 text-primary">
-          MERGED
-        </span>
-      </div>
-
-      <p className="text-body-md text-on-surface mt-3 font-medium">
-        {pr.title}
-      </p>
-      <p className="text-body-md text-on-surface-variant mt-2">{pr.oneLine}</p>
-
-      <div className="mt-4 flex items-center justify-between text-label-md text-on-surface-variant">
-        <span className="inline-flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="inline-block w-2 h-2 rounded-full bg-primary"
-          />
-          {pr.language}
-        </span>
-        <ArrowUpRight
-          aria-hidden="true"
-          className="w-4 h-4 text-on-surface-variant group-hover:text-primary transition-colors"
-        />
-      </div>
-    </a>
-  );
+// Highlights grouped by repository, keeping their order in the data.
+function byRepo(prs: HighlightPR[]): [string, HighlightPR[]][] {
+  const groups = new Map<string, HighlightPR[]>();
+  for (const pr of prs) {
+    groups.set(pr.repo, [...(groups.get(pr.repo) ?? []), pr]);
+  }
+  return [...groups.entries()];
 }
 
 export default function OpenSource() {
   return (
-    <Reveal>
-      <section
-        id="open-source"
-        aria-labelledby="open-source-heading"
-        className="mt-16"
-      >
-        <h2
-          id="open-source-heading"
-          className="text-headline-lg font-semibold"
+    <Section
+      id="open-source"
+      title="Open Source"
+      aside={
+        <a
+          href={openSource.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-primary transition-colors"
         >
-          Open Source
-        </h2>
-        <p className="text-body-md text-on-surface-variant mt-3 max-w-2xl">
-          Selected merged PRs. Each card opens the change and its review.
-        </p>
+          {openSource.merged} merged ↗
+        </a>
+      }
+    >
+      <div className="px-6 py-5 space-y-6">
+        {byRepo(highlights).map(([repo, prs]) => (
+          <div key={repo}>
+            <p className="font-mono text-label-md">
+              <span className="rounded-full bg-surface-container px-2.5 py-0.5 text-on-surface">
+                {repo}
+              </span>
+            </p>
+            <ul className="mt-2">
+              {prs.map((pr) => (
+                <li key={pr.number}>
+                  <a
+                    href={`https://github.com/${pr.repo}/pull/${pr.number}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group -mx-2 flex items-start gap-3 rounded-md-sm px-2 py-2 hover:bg-surface-container transition-colors focus-visible:outline-2 focus-visible:outline-primary"
+                  >
+                    <span className="w-14 shrink-0 pt-0.5 font-mono text-label-md text-primary">
+                      #{pr.number}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-body-md text-on-surface">
+                        {pr.title}
+                      </span>
+                      <span className="mt-0.5 block text-label-md text-on-surface-variant">
+                        {pr.oneLine}
+                      </span>
+                    </span>
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-on-surface-variant group-hover:text-primary transition-colors"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {highlights.map((pr) => (
-            <PRCard key={`${pr.repo}-${pr.number}`} pr={pr} />
-          ))}
-        </div>
-
-        <p className="text-label-md text-on-surface-variant mt-8">
+        <p className="text-label-md text-on-surface-variant">
           {openSource.merged} PRs merged across {openSource.projects} upstream
           projects as of {asOf} ·{" "}
           <a
@@ -77,7 +78,7 @@ export default function OpenSource() {
             see them all on GitHub
           </a>
         </p>
-      </section>
-    </Reveal>
+      </div>
+    </Section>
   );
 }

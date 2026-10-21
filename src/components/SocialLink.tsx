@@ -1,4 +1,4 @@
-import { Heart, Mail } from "lucide-react";
+import { ArrowUpRight, Heart, Mail } from "lucide-react";
 import type { Social } from "@/data/socials";
 
 // Brand icons as inline SVGs — lucide-react 1.x dropped brand icons
@@ -35,17 +35,31 @@ const iconMap: Record<Social["icon"], React.ReactNode> = {
   instagram: InstagramIcon,
 };
 
+// One cell of the footer's social grid: icon, name and handle.
 export default function SocialLink({ social }: { social: Social }) {
   const icon = iconMap[social.icon];
   return (
     <a
       href={social.href}
-      aria-label={social.label}
       target={social.href.startsWith("mailto:") ? undefined : "_blank"}
       rel="noopener noreferrer"
-      className="inline-flex items-center justify-center w-11 h-11 rounded-md-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+      className="group flex items-center gap-3 px-6 py-4 border-b border-dashed border-outline sm:odd:border-r hover:bg-surface-container/60 transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:-outline-offset-2"
     >
-      {icon}
+      <span className="text-on-surface-variant group-hover:text-primary transition-colors">
+        {icon}
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-body-md font-medium text-on-surface">
+          {social.label}
+        </span>
+        <span className="block truncate font-mono text-label-md text-on-surface-variant">
+          {social.handle}
+        </span>
+      </span>
+      <ArrowUpRight
+        aria-hidden="true"
+        className="h-4 w-4 shrink-0 text-on-surface-variant group-hover:text-primary transition-colors"
+      />
     </a>
   );
 }
