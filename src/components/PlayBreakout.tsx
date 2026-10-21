@@ -15,6 +15,9 @@ export default function PlayBreakout() {
   const [targetDir, setTargetDir] = useState<"open" | "closed">("open");
   const targetRef = useRef<"open" | "closed">("open");
   const buttonRef = useRef<HTMLButtonElement>(null);
+  // Set once the game has been opened, so focus returns to the button after
+  // it closes but not on first load.
+  const openedRef = useRef(false);
   const [origin, setOrigin] = useState<{ x: number; y: number } | null>(null);
 
   const open = () => {
@@ -22,6 +25,7 @@ export default function PlayBreakout() {
     if (rect) {
       setOrigin({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
     }
+    openedRef.current = true;
     targetRef.current = "open";
     setTargetDir("open");
     setPhase("iris-in");
@@ -39,7 +43,7 @@ export default function PlayBreakout() {
   }, [phase]);
 
   useEffect(() => {
-    if (phase === "closed") buttonRef.current?.focus();
+    if (phase === "closed" && openedRef.current) buttonRef.current?.focus();
   }, [phase]);
 
   const onIrisDone = (p: IrisPhase) => {
