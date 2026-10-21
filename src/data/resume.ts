@@ -164,8 +164,9 @@ export const experience: ExperienceEntry[] = [
     title: "Core Maintainer",
     org: "VOSS Labs",
     orgUrl: "https://github.com/voss-labs",
-    dates: "Sep 2026 – Present",
-    about: "Student-run open-source lab building the college's software",
+    dates: "Jun 2025 – Present",
+    about:
+      "Student-run open-source lab building the college's software; work began with VFORUM in Jun 2025",
     bullets: [
       {
         text: "Built elective rosters for verp, the college ERP (Next.js, TypeScript, PostgreSQL), so marks, locking, publishing and attendance count only enrolled students",
@@ -176,10 +177,11 @@ export const experience: ExperienceEntry[] = [
   {
     title: "Web Developer (Intern)",
     org: "Trineteini Quantum",
+    orgUrl: "https://dialclub.org",
     dates: "Jan 2025 – Mar 2025",
     bullets: [
       {
-        text: "Built the admin panel and social-media dashboard for dialclub.org: CRUD for users and content, cross-channel publishing, a role-based instructor dashboard, an event lifecycle and a quiz module (React, Node.js, REST APIs)",
+        text: "Built the admin panel, organisation management, and the student and maintainer dashboards for dialclub.org, an ed-tech platform (React, Node.js, REST APIs)",
       },
     ],
   },
@@ -305,6 +307,8 @@ export type Project = {
   url: string;
   linkLabel?: string;
   repo?: string;
+  // Label for the GitHub link; defaults to "Code".
+  repoLabel?: string;
   status: ProjectStatus;
 };
 
@@ -315,6 +319,7 @@ export const projects: Project[] = [
       "Rust CLI and MCP server that lets AI coding agents resolve Git merge conflicts natively.",
     url: "https://gfix.space",
     repo: "https://github.com/ameyypawar/gfix-docs",
+    repoLabel: "Docs",
     status: "live",
   },
   {
@@ -322,7 +327,8 @@ export const projects: Project[] = [
     tagline:
       "VS Code extension for merge conflicts: a conflict tree, one-click fixes and a per-resolution audit trail. 44 VS Marketplace installs and 922 Open VSX downloads.",
     url: "https://gitfix.pro",
-    repo: "https://github.com/ameyypawar/gitfix",
+    repo: "https://github.com/ameyypawar/gfix-docs",
+    repoLabel: "Docs",
     status: "live",
   },
   {
@@ -331,6 +337,7 @@ export const projects: Project[] = [
       "Chrome extension that bulk-downloads YouTube transcripts with metadata, up to 800 videos a session. 343 users, 4.4/5 from 24 ratings.",
     url: "https://tubio.pro",
     repo: "https://github.com/ameyypawar/tubio-docs",
+    repoLabel: "Docs",
     status: "live",
   },
   {
