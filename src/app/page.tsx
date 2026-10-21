@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
-import OpenSource from "@/components/OpenSource";
 import PlayBreakout from "@/components/PlayBreakout";
 import { education, openSource, profile } from "@/data/resume";
 
@@ -61,7 +60,6 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Experience />
-        <OpenSource />
         <FeaturedProjects />
         <Skills />
       </main>
