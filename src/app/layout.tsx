@@ -26,6 +26,10 @@ const instrumentSerif = Instrument_Serif({
 const [o2, gix] = openSource.top;
 const title = `${profile.name} — Software Engineer (Observability & Version Control)`;
 
+// Sets data-theme on <html> before first paint: the saved choice, else the
+// system setting. Runs inline so dark-mode visitors never see a light flash.
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}var d=document.documentElement;d.dataset.theme=t;d.style.colorScheme=t}catch(e){}})()`;
+
 // TODO: favicon
 export const metadata: Metadata = {
   metadataBase: new URL("https://ameypawar.com"),
@@ -43,8 +47,11 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#FFFDF8",
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFDF8" },
+    { media: "(prefers-color-scheme: dark)", color: "#16182E" },
+  ],
+  colorScheme: "light dark",
 };
 
 export default function RootLayout({
@@ -55,8 +62,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full bg-canvas text-on-surface font-sans">
         <div className="backdrop" aria-hidden="true" />
         <div className="sheet flex flex-col">
