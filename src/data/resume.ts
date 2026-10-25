@@ -22,7 +22,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ameypawar77/",
   x: "https://x.com/ameyypawr",
   // Profile photo under public/, e.g. "/avatar.jpg". Unset shows initials.
-  avatar: undefined as string | undefined,
+  avatar: "/avatar.jpg" as string | undefined,
 };
 
 export function stripProtocol(url: string): string {
