@@ -177,7 +177,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    title: "Systems Developer (Intern)",
+    title: "Web Systems Developer (Intern)",
     org: "Trineteini Quantum",
     orgUrl: "https://dialclub.org",
     dates: "Dec 2025 – Mar 2026",
