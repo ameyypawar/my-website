@@ -177,10 +177,10 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    title: "Web Developer (Intern)",
+    title: "Systems Developer (Intern)",
     org: "Trineteini Quantum",
     orgUrl: "https://dialclub.org",
-    dates: "Jan 2025 – Mar 2025",
+    dates: "Dec 2025 – Mar 2026",
     bullets: [
       {
         text: "Built the admin panel, organisation management, and the student and maintainer dashboards for dialclub.org, an ed-tech platform (React, Node.js, REST APIs)",
