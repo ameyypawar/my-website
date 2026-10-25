@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/", label: "Home" },
@@ -44,6 +45,7 @@ export default function Nav() {
               </Link>
             );
           })}
+          <ThemeToggle />
         </div>
       </nav>
     </header>

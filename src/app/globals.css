@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette — light only, after Van Gogh: warm paper, ink, cobalt, chrome yellow */
+  /* Palette — light theme, after Van Gogh: warm paper, ink, cobalt, chrome yellow */
   --color-canvas: #DCE5F2;
   --color-surface: #FFFDF8;
   --color-surface-container: #F7F2E8;
@@ -36,6 +36,22 @@
   --font-serif: var(--font-instrument-serif);
 }
 
+/* Dark theme — night paper under the café terrace: deep indigo, cream ink,
+   chrome-yellow links. data-theme is set before first paint by the inline
+   script in the root layout. */
+:root[data-theme="dark"] {
+  --color-canvas: #0E1030;
+  --color-surface: #16182E;
+  --color-surface-container: #1E2140;
+  --color-surface-container-high: #282C52;
+  --color-primary: #F5C542;
+  --color-accent: #E8892B;
+  --color-on-surface: #F3ECDC;
+  --color-on-surface-variant: #B8B1C9;
+  --color-outline: #3B3F66;
+  color-scheme: dark;
+}
+
 html, body {
   background-color: var(--color-canvas);
   color: var(--color-on-surface);
@@ -44,36 +60,38 @@ html, body {
 button, a { -webkit-tap-highlight-color: transparent; }
 
 /* ───────────────────────────────────────────────────────────────
-   Artwork — .backdrop fills the viewport behind the sheet; .art-window
-   shows the same fixed image through the top of the homepage sheet.
-   --art is a starry-sky placeholder until the generated painting
-   replaces it (e.g. url("/art/backdrop.webp") center / cover).
+   Artwork — one fixed .backdrop layer behind the sheet, a painting per
+   theme in three sizes. Anchored to the top so the focal point stays in
+   the hero window on browser windows shorter than 16:10. The homepage
+   hero window is a hole in the sheet (see .sheet:has(.art-window)),
+   not a second fixed background, which iOS Safari would ignore.
    ─────────────────────────────────────────────────────────────── */
 :root {
-  --art:
-    radial-gradient(circle at 82% 14%, #FFF3B0 0 2.5%, #F2B705 3% 5.5%, rgba(242, 183, 5, 0.35) 6% 9%, transparent 9.5%),
-    radial-gradient(circle at 18% 22%, #FFF3B0 0 0.8%, rgba(242, 183, 5, 0.5) 1.1% 2.4%, transparent 2.8%),
-    radial-gradient(circle at 40% 10%, #FFF3B0 0 0.6%, rgba(242, 183, 5, 0.45) 0.9% 2%, transparent 2.4%),
-    radial-gradient(circle at 62% 30%, #FFF3B0 0 0.7%, rgba(242, 183, 5, 0.45) 1% 2.2%, transparent 2.6%),
-    radial-gradient(circle at 8% 60%, #FFF3B0 0 0.6%, rgba(242, 183, 5, 0.4) 0.9% 2%, transparent 2.4%),
-    radial-gradient(circle at 92% 70%, #FFF3B0 0 0.6%, rgba(242, 183, 5, 0.4) 0.9% 2%, transparent 2.4%),
-    repeating-radial-gradient(ellipse at 45% 38%, rgba(255, 255, 255, 0.1) 0 6px, transparent 6px 22px),
-    radial-gradient(ellipse at 45% 38%, #5B8DEF 0%, transparent 45%),
-    linear-gradient(180deg, #16357F 0%, #1E4BB8 45%, #2A7F62 82%, #1F5A44 100%);
+  --art-1440: url("/art/day-1440.webp");
+  --art-1920: url("/art/day-1920.webp");
+  --art-2560: url("/art/day-2560.webp");
+}
+:root[data-theme="dark"] {
+  --art-1440: url("/art/night-1440.webp");
+  --art-1920: url("/art/night-1920.webp");
+  --art-2560: url("/art/night-2560.webp");
 }
 
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: var(--art);
+  background-color: var(--color-canvas);
+  background-image: var(--art-1440);
   background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
-
-.art-window {
-  background: var(--art);
-  background-size: cover;
-  background-attachment: fixed;
+@media (min-width: 1441px) {
+  .backdrop { background-image: var(--art-1920); }
+}
+@media (min-width: 1921px), (min-width: 1024px) and (min-resolution: 1.5dppx) {
+  .backdrop { background-image: var(--art-2560); }
 }
 
 /* The page: a centred sheet of paper over the artwork. */
@@ -88,6 +106,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--color-outline) 70%, transparent),
     0 24px 80px -20px rgba(16, 32, 80, 0.45);
+}
+
+/* The hero window: the sheet stays transparent between the nav (3.5rem)
+   and the bottom of .art-window (h-44 = 11rem, h-56 = 14rem from sm). */
+.art-window {
+  background: transparent;
+}
+.sheet:has(.art-window) {
+  background: linear-gradient(
+    to bottom,
+    var(--color-surface) 0 3.5rem,
+    transparent 3.5rem 14.5rem,
+    var(--color-surface) 14.5rem
+  );
+}
+@media (min-width: 640px) {
+  .sheet:has(.art-window) {
+    background: linear-gradient(
+      to bottom,
+      var(--color-surface) 0 3.5rem,
+      transparent 3.5rem 17.5rem,
+      var(--color-surface) 17.5rem
+    );
+  }
 }
 
 /* Highlighter stroke in chrome yellow. */
@@ -214,8 +256,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 /* ───────────────────────────────────────────────────────────────
-   Print stylesheet — black on white, one A4 page. CI prints /resume
-   with it and checks the result (scripts/check-resume-pdf.py).
+   Print stylesheet — black on white, one A4 page, in either theme. CI
+   prints /resume with it and checks the result (scripts/check-resume-pdf.py).
    ─────────────────────────────────────────────────────────────── */
 @media print {
   @page {
