@@ -9,6 +9,11 @@ const proofLink =
 const solidButton =
   "group inline-flex items-center gap-2 rounded-full bg-on-surface px-4 py-2 text-body-md text-surface hover:bg-primary transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2";
 
+// Between solid and outline: an accent border, tint and text. The 2px border
+// takes 1px off the padding so it stays the same size as the other buttons.
+const accentButton =
+  "group inline-flex items-center gap-2 rounded-full border-2 border-primary bg-primary/5 px-[15px] py-[7px] text-body-md font-medium text-primary hover:bg-primary/15 transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2";
+
 const outlineButton =
   "group inline-flex items-center gap-2 rounded-full border border-outline bg-surface px-4 py-2 text-body-md text-on-surface hover:border-primary hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2";
 
@@ -100,7 +105,7 @@ export default function Hero() {
             </span>
           </a>
 
-          <a href={`mailto:${profile.email}`} className={outlineButton}>
+          <a href={`mailto:${profile.email}`} className={accentButton}>
             {profile.email}
             <span
               aria-hidden="true"
