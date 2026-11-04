@@ -21,6 +21,8 @@ export const profile = {
   github: "https://github.com/ameyypawar",
   linkedin: "https://www.linkedin.com/in/ameypawar77/",
   x: "https://x.com/ameyypawr",
+  // 30-minute Calendly booking page, linked from the hero.
+  calendly: "https://calendly.com/ameyypawar/30min",
   // Profile photo under public/, e.g. "/avatar.jpg". Unset shows initials.
   avatar: "/avatar.jpg" as string | undefined,
 };

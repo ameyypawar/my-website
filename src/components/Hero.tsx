@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Download, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays, Download, MapPin } from "lucide-react";
 import { openSource, profile } from "@/data/resume";
 
 const proofLink =
@@ -93,7 +93,14 @@ export default function Hero() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-2.5">
-          <a href={`mailto:${profile.email}`} className={solidButton}>
+          <a href={profile.calendly} target="_blank" rel="noopener noreferrer" className={solidButton}>
+            Book a call
+            <span aria-hidden="true">
+              <CalendarDays className="h-4 w-4" />
+            </span>
+          </a>
+
+          <a href={`mailto:${profile.email}`} className={outlineButton}>
             {profile.email}
             <span
               aria-hidden="true"
